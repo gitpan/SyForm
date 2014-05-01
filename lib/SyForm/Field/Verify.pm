@@ -1,0 +1,59 @@
+package SyForm::Field::Verify;
+BEGIN {
+  $SyForm::Field::Verify::AUTHORITY = 'cpan:GETTY';
+}
+# ABSTRACT: Required field
+$SyForm::Field::Verify::VERSION = '0.001';
+use Moose::Role;
+use Moose::Util qw( apply_all_roles );
+use namespace::autoclean;
+
+has required => (
+  is => 'ro',
+  isa => 'Bool',
+  predicate => 'has_required',
+);
+
+has type => (
+  is => 'ro',
+  isa => 'Str',
+  predicate => 'has_type',
+);
+
+has verify_filters => (
+  is => 'ro',
+  isa => 'ArrayRef[Str]',
+  predicate => 'has_verify_filters',
+);
+
+sub BUILD {
+  my ( $self ) = @_;
+  apply_all_roles( $self->syform, 'SyForm::Verify' ) unless $self->syform->does('SyForm::Verify');
+}
+
+1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+SyForm::Field::Verify - Required field
+
+=head1 VERSION
+
+version 0.001
+
+=head1 AUTHOR
+
+Torsten Raudssus <torsten@raudss.us>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2014 by Torsten Raudssus.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
