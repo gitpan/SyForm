@@ -2,24 +2,22 @@ package SyForm::Exception::UnknownErrorOnBuildFields;
 BEGIN {
   $SyForm::Exception::UnknownErrorOnBuildFields::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::UnknownErrorOnBuildFields::VERSION = '0.002';
+$SyForm::Exception::UnknownErrorOnBuildFields::VERSION = '0.003';
 use Moose;
-extends 'Throwable::Error';
-use namespace::autoclean;
+extends 'SyForm::Exception';
 
 with qw(
   SyForm::Exception::Role::WithSyForm
   SyForm::Exception::Role::WithOriginalError
 );
 
-around throw => sub {
-  my ( $orig, $self, $syform, $error ) = @_;
-  $self->$orig({
-    message => '[ERROR] Unknown error on building up of fields'."\n\n".
-      ' Original error message:'."\n\n".$error,
+sub throw_with_args {
+  my ( $class, $syform, $error ) = @_;
+  $class->rethrow_syform_exception($error);
+  $class->throw($class->error_message_text($error).' on building up of fields',
     syform => $syform,
     original_error => $error,
-  });
+  );
 };
 
 1;
@@ -34,7 +32,7 @@ SyForm::Exception::UnknownErrorOnBuildFields
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 AUTHOR
 

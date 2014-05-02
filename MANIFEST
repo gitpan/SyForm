@@ -9,13 +9,16 @@ README
 cpanfile
 dist.ini
 lib/SyForm.pm
+lib/SyForm/Exception.pm
 lib/SyForm/Exception/Role/WithOriginalError.pm
 lib/SyForm/Exception/Role/WithSyForm.pm
 lib/SyForm/Exception/Role/WithSyFormField.pm
 lib/SyForm/Exception/UnexpectedCallToGetValueByArgs.pm
+lib/SyForm/Exception/UnknownErrorOnBuildField.pm
 lib/SyForm/Exception/UnknownErrorOnBuildFields.pm
 lib/SyForm/Exception/UnknownErrorOnCreate.pm
 lib/SyForm/Exception/UnknownErrorOnProcess.pm
+lib/SyForm/Exception/ValidationFailedForTypeConstraint.pm
 lib/SyForm/Field.pm
 lib/SyForm/Field/Default.pm
 lib/SyForm/Field/HTML.pm

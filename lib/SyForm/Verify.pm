@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Main verification logic
-$SyForm::Verify::VERSION = '0.002';
+$SyForm::Verify::VERSION = '0.003';
 use Moose::Role;
 use Data::Verifier;
 use namespace::autoclean;
@@ -77,7 +77,7 @@ SyForm::Verify - Main verification logic
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 AUTHOR
 

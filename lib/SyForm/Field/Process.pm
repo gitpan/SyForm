@@ -3,9 +3,8 @@ BEGIN {
   $SyForm::Field::Process::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for processed fields
-$SyForm::Field::Process::VERSION = '0.002';
+$SyForm::Field::Process::VERSION = '0.003';
 use Moose::Role;
-use SyForm::Exception::UnexpectedCallToGetValueByArgs;
 use namespace::autoclean;
 
 sub has_value_by_args {
@@ -15,7 +14,7 @@ sub has_value_by_args {
 
 sub get_value_by_args {
   my ( $self, %args ) = @_;
-  SyForm::Exception::UnexpectedCallToGetValueByArgs->throw($self)
+  SyForm->throw( UnexpectedCallToGetValueByArgs => $self )
     unless $self->has_value_by_args(%args);
   return $self->get_value_by_arg($args{$self->name});
 }
@@ -55,7 +54,7 @@ SyForm::Field::Process - Role for processed fields
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 AUTHOR
 

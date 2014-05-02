@@ -2,13 +2,30 @@ package SyForm::Exception::Role::WithOriginalError;
 BEGIN {
   $SyForm::Exception::Role::WithOriginalError::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::Role::WithOriginalError::VERSION = '0.002';
+$SyForm::Exception::Role::WithOriginalError::VERSION = '0.003';
 use Moose::Role;
 
 has original_error => (
   is => 'ro',
   required => 1,
 );
+
+sub rethrow_syform_exception {
+  my ( $class, $error ) = @_;
+  die $error if $error->isa('SyForm::Exception');
+}
+
+sub error_message_text {
+  my ( $class, $error ) = @_;
+  my $error_type = $error->isa('Moose::Exception')
+    ? 'Moose exception' : 'Unknown error';
+}
+
+around throw => sub {
+  my ( $orig, $class, $message, %args ) = @_;
+  $message .= "\n".'[Original Error] '.$args{original_error};
+  return $class->$orig($message, %args);
+};
 
 1;
 
@@ -22,7 +39,7 @@ SyForm::Exception::Role::WithOriginalError
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 AUTHOR
 

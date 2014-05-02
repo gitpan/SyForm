@@ -3,8 +3,9 @@ BEGIN {
   $SyForm::Field::Label::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: A label for a field
-$SyForm::Field::Label::VERSION = '0.002';
+$SyForm::Field::Label::VERSION = '0.003';
 use Moose::Role;
+use namespace::autoclean;
 
 has label => (
   is => 'ro',
@@ -24,7 +25,7 @@ SyForm::Field::Label - A label for a field
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 AUTHOR
 

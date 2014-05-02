@@ -3,8 +3,26 @@ Changes from 1740-07-18 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.002 at 2014-05-02 05:36:36 +0000
+version 0.003 at 2014-05-02 10:20:32 +0000
 ------------------------------------------
+
+  Change: 855c9e6fbff389a8a36a40efe65b57a37cea2b8b
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-02 12:19:53 +0000
+
+    More speaking own anon class names, remake of load test 
+
+  Change: 512d2d3a33628b1d1b110548ef3e6724eff0c019
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-02 11:54:44 +0000
+
+    details, Details, DETAILS!!! 
+
+  Change: 9f46e237d8eaa970b67f439c019bde6204504540
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-02 11:46:21 +0000
+
+    Extreme tuning of the exception concept. Little changes. 
 
   Change: d97275afa2b0493d3105d53783204ab14525e071
   Author: Torsten Raudssus <torsten@raudss.us>

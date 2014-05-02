@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: SyForm - a role driven form management
-$SyForm::VERSION = '0.002';
+$SyForm::VERSION = '0.003';
 use Moose::Role;
 use Tie::IxHash;
 use Carp qw( croak );
@@ -14,8 +14,8 @@ role_type 'SyForm::Field';
 role_type 'SyForm::Values';
 role_type 'SyForm::Results';
 
-use SyForm::Exception::UnknownErrorOnCreate;
-use SyForm::Exception::UnknownErrorOnBuildFields;
+use SyForm::Exception;
+use Module::Runtime qw( use_module );
 use namespace::autoclean;
 
 has fields => (
@@ -68,27 +68,25 @@ has field_args => (
 sub _build_fields {
   my ( $self ) = @_;
   my $fields = Tie::IxHash->new;
-
   eval {
     my $fields_list = Tie::IxHash->new(@{$self->fields_list});
     for my $name ($fields_list->Keys) {
       my %field_args = %{$fields_list->FETCH($name)};
-      $fields->Push($name, $self->_create_field($name,
-        %field_args, $self->has_field_args ? (%{$self->field_args}) : (),
-      ));
+      eval {
+        $fields->Push($name, $self->_create_field($name,
+          %field_args, $self->has_field_args ? (%{$self->field_args}) : (),
+        ));
+      };
+      SyForm->throw( UnknownErrorOnBuildField => $name, { %field_args }, $@ ) if $@;
     }
   };
-
-  if ($@) {
-    my $error = $@;
-    SyForm::Exception::UnknownErrorOnBuildFields->throw($self,$error);
-  }
-
+  SyForm->throw( UnknownErrorOnBuildFields => $self, $@ ) if $@;
   return $fields;
 }
 
 sub _create_field {
   my ( $self, $name, %field_args ) = @_;
+  my $field;
   my $class = delete $field_args{class} || $self->field_class;
   my $traits = delete $field_args{traits} || [];
   # actually there should be a more decent management of the roles, with
@@ -100,7 +98,7 @@ sub _create_field {
       push @{$traits}, $self->field_roles_by_arg->FETCH($arg);
     }
   }
-  $class->new_with_traits(
+  return $class->new_with_traits(
     syform => $self,
     traits => $traits,
     name => $name,
@@ -149,7 +147,8 @@ has _field_metaclass => (
 
 sub _build__field_metaclass {
   my ( $self ) = @_;
-  return Moose::Meta::Class->create_anon_class(
+  return Moose::Meta::Class->create(
+    (ref $self).'::Field',
     superclasses => [$self->field_base_class],
     roles => [
       'SyForm::Field', 'MooseX::Traits',
@@ -158,52 +157,64 @@ sub _build__field_metaclass {
   )
 }
 
+sub throw {
+  my ( $class, $exception, @args ) = @_;
+  if (scalar @args == 0) {
+    SyForm::Exception->throw($exception);
+  }
+  my $exception_class = 'SyForm::Exception::'.$exception;
+  use_module($exception_class);
+  $exception_class->throw_with_args(@args);
+}
+
 sub add_role {
   my ( $self, @roles ) = @_;
   for my $role (@roles) {
     unless ($self->does($role)) {
       apply_all_roles($self, $role);
-      if ($role->can('BUILD')) {
-        $role->can('BUILD')->($self);
-      }
+      $role->can('BUILD')->($self) if $role->can('BUILD');
     }
   }
 }
 
-sub create {
-  my @create_args = @_;
-  my ( $class, $field_list_arg, %args ) = @_;
-  my $form;
+{
+  my $CLASS_SERIAL = 0;
+  sub create {
+    my @create_args = @_;
+    my ( $class, $field_list_arg, %args ) = @_;
+    my $form;
 
-  eval {
-    my $ref = ref $class;
-    $class = $ref if $ref;
+    eval {
+      my $ref = ref $class;
+      $class = $ref if $ref;
 
-    my $process_role = delete $args{process_role} || 'SyForm::Process';
-    my $no_process = delete $args{no_process};
-    my $roles = delete $args{roles} || [];
-    unshift @{$roles}, $process_role unless $no_process;
-    unshift @{$roles}, $class, 'MooseX::Traits';
-    my $form_class = delete $args{class};
+      my $process_role = delete $args{process_role} || 'SyForm::Process';
+      my $no_process = delete $args{no_process};
+      my $roles = delete $args{roles} || [];
+      unshift @{$roles}, $process_role unless $no_process;
+      unshift @{$roles}, $class, 'MooseX::Traits';
+      my $form_class = delete $args{class};
 
-    unless ($form_class) {
-      my $base_class = delete $args{base_class} || 'Moose::Object';
-      my $form_metaclass = Moose::Meta::Class->create_anon_class(
-        superclasses => [$base_class],
-        roles => $roles,
-        cache => 1,
+      unless ($form_class) {
+        my $base_class = delete $args{base_class} || 'Moose::Object';
+        my $form_metaclass = Moose::Meta::Class->create(
+          $class.'::__GENERATED__::'.$CLASS_SERIAL++,
+          superclasses => [$base_class],
+          roles => $roles,
+          cache => 1,
+        );
+        $form_class = $form_metaclass->name;
+      }
+
+      $form = $form_class->new(
+        fields => $field_list_arg,
       );
-      $form_class = $form_metaclass->name;
-    }
+    };
 
-    $form = $form_class->new(
-      fields => $field_list_arg,
-    );
-  };
+    SyForm->throw( UnknownErrorOnCreate => [@create_args], $@ ) if ($@);
 
-  SyForm::Exception::UnknownErrorOnCreate->throw([@create_args],$@) if ($@);
-
-  return $form;
+    return $form;
+  }
 }
 
 1;
@@ -218,7 +229,7 @@ SyForm - SyForm - a role driven form management
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 

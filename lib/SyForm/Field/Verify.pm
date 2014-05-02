@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Field::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Required field
-$SyForm::Field::Verify::VERSION = '0.002';
+$SyForm::Field::Verify::VERSION = '0.003';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -48,7 +48,7 @@ SyForm::Field::Verify - Required field
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 AUTHOR
 

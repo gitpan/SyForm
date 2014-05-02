@@ -3,11 +3,10 @@ BEGIN {
   $SyForm::Process::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for processed fields
-$SyForm::Process::VERSION = '0.002';
+$SyForm::Process::VERSION = '0.003';
 use Moose::Role;
 use Moose::Meta::Class;
 use Moose::Meta::Attribute;
-use SyForm::Exception::UnknownErrorOnProcess;
 use namespace::autoclean;
 
 #################
@@ -89,7 +88,8 @@ has _values_metaclass => (
 
 sub _build__values_metaclass {
   my ( $self ) = @_;
-  return Moose::Meta::Class->create_anon_class(
+  return Moose::Meta::Class->create(
+    (ref $self).'::Values',
     superclasses => [$self->values_base_class],
     roles => [
       'SyForm::Values', 'MooseX::Traits',
@@ -150,7 +150,8 @@ has _results_metaclass => (
 
 sub _build__results_metaclass {
   my ( $self ) = @_;
-  return Moose::Meta::Class->create_anon_class(
+  return Moose::Meta::Class->create(
+    (ref $self).'::Results',
     superclasses => [$self->results_base_class],
     roles => [
       'SyForm::Results', 'MooseX::Traits',
@@ -196,7 +197,6 @@ sub process {
   my @process_args = @_;
   my ( $self, %args ) = @_;
   my $results;
-
   eval {
     my %values_args;
     for my $field (@{$self->process_fields}) {
@@ -213,23 +213,25 @@ sub process {
     }
     $results = $self->create_results($values, %results_args);
   };
-
-  SyForm::Exception::UnknownErrorOnProcess->throw($self,[@process_args],$@) if ($@);
-
+  SyForm->throw( UnknownErrorOnProcess => $self,[@process_args], $@ ) if $@;
   return $results;
 }
 
 sub create_values {
   my ( $self, %args ) = @_;
   return $self->values_class->new({
-    syform => $self, %args
+    syform => $self,
+    field_names => [map { $_->name } @{$self->process_fields}],
+    %args
   });
 }
 
 sub create_results {
   my ( $self, $values, %args ) = @_;
   return $self->results_class->new({
-    values => $values, %args
+    values => $values,
+    field_names => [map { $_->name } @{$self->process_fields}],
+    %args
   });
 }
 
@@ -245,7 +247,7 @@ SyForm::Process - Role for processed fields
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 AUTHOR
 
