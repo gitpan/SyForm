@@ -1,10 +1,23 @@
 ==================================================
-Changes from 1740-07-17 00:00:00 +0000 to present.
+Changes from 1740-07-18 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.001 at 2014-05-01 03:18:48 +0000
+version 0.002 at 2014-05-02 05:36:36 +0000
 ------------------------------------------
+
+  Change: d97275afa2b0493d3105d53783204ab14525e071
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-02 07:28:59 +0000
+
+    Added original error exception role, added process_args on process
+    exception 
+
+  Change: dfe5f01c843e8dac8762ca0d068ebc4d39a1d2aa
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-02 07:21:50 +0000
+
+    Next gen.... now everything readonly 
 
   Change: 18c53f1a9fa827a7be5d84080b4a5268f0dfb5e1
   Author: Torsten Raudssus <torsten@raudss.us>

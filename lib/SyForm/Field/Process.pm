@@ -3,26 +3,44 @@ BEGIN {
   $SyForm::Field::Process::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for processed fields
-$SyForm::Field::Process::VERSION = '0.001';
+$SyForm::Field::Process::VERSION = '0.002';
 use Moose::Role;
+use SyForm::Exception::UnexpectedCallToGetValueByArgs;
+use namespace::autoclean;
 
-has result => (
-  is => 'rw',
-  predicate => 'has_result',
-  clearer => 'reset_result',
-);
-
-sub set_result {
-  my ( $self, $value ) = @_;
-  $self->result($value);
+sub has_value_by_args {
+  my ( $self, %args ) = @_;
+  return exists($args{$self->name}) ? 1 : 0;
 }
 
-sub process {
+sub get_value_by_args {
   my ( $self, %args ) = @_;
-  if (exists $args{$self->name}) {
-    $self->set_result($args{$self->name});
-  }
-  return 1;
+  SyForm::Exception::UnexpectedCallToGetValueByArgs->throw($self)
+    unless $self->has_value_by_args(%args);
+  return $self->get_value_by_arg($args{$self->name});
+}
+
+sub get_value_by_arg {
+  my ( $self, $arg ) = @_;
+  return $arg;
+}
+
+sub has_result_by_values {
+  my ( $self, $values ) = @_;
+  my $has = 'has_'.($self->name);
+  return $values->$has ? 1 : 0;
+}
+
+sub get_result_by_values {
+  my ( $self, $values ) = @_;
+  return unless $self->has_result_by_values($values);
+  my $name = $self->name;
+  return $self->get_result_by_value($values->$name);
+}
+
+sub get_result_by_value {
+  my ( $self, $value ) = @_;
+  return $value;
 }
 
 1;
@@ -37,7 +55,7 @@ SyForm::Field::Process - Role for processed fields
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 AUTHOR
 

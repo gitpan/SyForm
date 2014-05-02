@@ -1,15 +1,27 @@
-package SyForm::Field::Label;
+package SyForm::Results;
 BEGIN {
-  $SyForm::Field::Label::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Results::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: A label for a field
-$SyForm::Field::Label::VERSION = '0.002';
+$SyForm::Results::VERSION = '0.002';
 use Moose::Role;
+use namespace::autoclean;
 
-has label => (
+with qw(
+  SyForm::Fields
+);
+
+# TODO
+# use MooseX::Role::WithOverloading;
+# use overload q{%{}} => 'as_hashref';
+
+has values => (
   is => 'ro',
-  isa => 'Str',
-  predicate => 'has_label',
+  isa => 'SyForm::Values',
+  required => 1,
+  handles => [qw(
+    syform
+    field
+  )],
 );
 
 1;
@@ -20,7 +32,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Field::Label - A label for a field
+SyForm::Results
 
 =head1 VERSION
 

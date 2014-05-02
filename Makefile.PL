@@ -24,6 +24,7 @@ my %WriteMakefileArgs = (
     "Data::Verifier" => 0,
     "Moose" => "2.1204",
     "MooseX::Traits" => "0.12",
+    "Throwable" => 0,
     "Tie::IxHash" => 0,
     "namespace::autoclean" => 0
   },
@@ -31,7 +32,7 @@ my %WriteMakefileArgs = (
     "Test::LoadAllModules" => "0.021",
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.001",
+  "VERSION" => "0.002",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -44,6 +45,7 @@ my %FallbackPrereqs = (
   "MooseX::Traits" => "0.12",
   "Test::LoadAllModules" => "0.021",
   "Test::More" => "0.96",
+  "Throwable" => 0,
   "Tie::IxHash" => 0,
   "namespace::autoclean" => 0
 );

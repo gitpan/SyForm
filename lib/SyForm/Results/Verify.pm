@@ -1,28 +1,17 @@
-package SyForm::Field::HTML;
+package SyForm::Results::Verify;
 BEGIN {
-  $SyForm::Field::HTML::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Results::Verify::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: HTML attributes for a field
-$SyForm::Field::HTML::VERSION = '0.002';
+# ABSTRACT: Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
+$SyForm::Results::Verify::VERSION = '0.002';
 use Moose::Role;
 use namespace::autoclean;
 
-has html => (
-  is => 'rw',
-  isa => 'Str',
+has verify_results => (
+  is => 'ro',
+  isa => 'Data::Verifier::Results',
   required => 1,
 );
-
-has input_attrs => (
-  is => 'rw',
-  isa => 'HashRef[Str|ArrayRef[Str]]',
-  lazy_build => 1,
-);
-
-sub _build_input_attrs {
-  my ( $self ) = @_; 
-  return {};
-}
 
 1;
 
@@ -32,7 +21,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Field::HTML - HTML attributes for a field
+SyForm::Results::Verify - Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
 
 =head1 VERSION
 

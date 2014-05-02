@@ -3,9 +3,8 @@ BEGIN {
   $SyForm::Field::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Required field
-$SyForm::Field::Verify::VERSION = '0.001';
+$SyForm::Field::Verify::VERSION = '0.002';
 use Moose::Role;
-use Moose::Util qw( apply_all_roles );
 use namespace::autoclean;
 
 has required => (
@@ -26,9 +25,15 @@ has verify_filters => (
   predicate => 'has_verify_filters',
 );
 
+has no_delete_on_invalid_result => (
+  is => 'ro',
+  isa => 'Bool',
+  default => sub { 0 },
+);
+
 sub BUILD {
   my ( $self ) = @_;
-  apply_all_roles( $self->syform, 'SyForm::Verify' ) unless $self->syform->does('SyForm::Verify');
+  $self->syform->add_role('SyForm::Verify');
 }
 
 1;
@@ -43,7 +48,7 @@ SyForm::Field::Verify - Required field
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 AUTHOR
 

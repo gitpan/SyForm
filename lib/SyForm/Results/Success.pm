@@ -1,15 +1,16 @@
-package SyForm::Field::Readonly;
+package SyForm::Results::Success;
 BEGIN {
-  $SyForm::Field::Readonly::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Results::Success::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: TODO
-$SyForm::Field::Readonly::VERSION = '0.002';
-die "TODO";
-
+# ABSTRACT: Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
+$SyForm::Results::Success::VERSION = '0.002';
 use Moose::Role;
-use namespace::autoclean;
 
-has readonly => (
+# TODO
+# use MooseX::Role::WithOverloading;
+# use overload q{bool} => 'success';
+
+has success => (
   is => 'ro',
   isa => 'Bool',
   required => 1,
@@ -23,7 +24,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Field::Readonly - TODO
+SyForm::Results::Success - Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
 
 =head1 VERSION
 

@@ -1,18 +1,19 @@
-package SyForm::Field::Readonly;
+package SyForm::Meta::Attribute::Field;
 BEGIN {
-  $SyForm::Field::Readonly::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Meta::Attribute::Field::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: TODO
-$SyForm::Field::Readonly::VERSION = '0.002';
-die "TODO";
-
+# ABSTRACT: Role for SyForm fields of SyForm::Results and SyForm::Values meta attributes
+$SyForm::Meta::Attribute::Field::VERSION = '0.002';
 use Moose::Role;
 use namespace::autoclean;
 
-has readonly => (
+has field => (
   is => 'ro',
-  isa => 'Bool',
+  isa => 'SyForm::Field',
   required => 1,
+  handles => [qw(
+    syform
+  )],
 );
 
 1;
@@ -23,7 +24,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Field::Readonly - TODO
+SyForm::Meta::Attribute::Field - Role for SyForm fields of SyForm::Results and SyForm::Values meta attributes
 
 =head1 VERSION
 
