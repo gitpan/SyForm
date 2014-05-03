@@ -1,35 +1,17 @@
-package SyForm::Values;
+package SyForm::Label;
 BEGIN {
-  $SyForm::Values::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Label::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Values::VERSION = '0.004';
+# ABSTRACT: A label for a form
+$SyForm::Label::VERSION = '0.004';
 use Moose::Role;
 use namespace::autoclean;
 
-with qw(
-  MooseX::Traits
-  SyForm::Fields
-);
-
-has syform => (
+has label => (
   is => 'ro',
-  isa => 'SyForm',
-  required => 1,
-  handles => [qw(
-    field
-  )],
+  isa => 'Str',
+  predicate => 'has_label',
 );
-
-sub get_value {
-  my ( $self, $name ) = @_;
-  $self->$name;
-}
-
-sub has_value {
-  my ( $self, $name ) = @_;
-  my $has_name = 'has_'.$name;
-  $self->$has_name;
-}
 
 1;
 
@@ -39,7 +21,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Values
+SyForm::Label - A label for a form
 
 =head1 VERSION
 

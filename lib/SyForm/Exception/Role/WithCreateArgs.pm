@@ -1,24 +1,13 @@
-package SyForm::Fields;
+package SyForm::Exception::Role::WithCreateArgs;
 BEGIN {
-  $SyForm::Fields::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Exception::Role::WithCreateArgs::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Fields::VERSION = '0.004';
+$SyForm::Exception::Role::WithCreateArgs::VERSION = '0.004';
 use Moose::Role;
-use namespace::autoclean;
 
-sub as_hashref {
-  my ( $self ) = @_;
-  my %hashref;
-  for my $name (@{$self->field_names}) {
-    my $has = 'has_'.$name;
-    $hashref{$name} = $self->$name if $self->$has;
-  }
-  return { %hashref };
-}
-
-has field_names => (
+has create_args => (
   is => 'ro',
-  isa => 'ArrayRef[Str]',
+  isa => 'ArrayRef',
   required => 1,
 );
 
@@ -30,7 +19,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Fields
+SyForm::Exception::Role::WithCreateArgs
 
 =head1 VERSION
 

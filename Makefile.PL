@@ -22,6 +22,7 @@ my %WriteMakefileArgs = (
   "NAME" => "SyForm",
   "PREREQ_PM" => {
     "Data::Verifier" => 0,
+    "List::MoreUtils" => 0,
     "Moose" => "2.1204",
     "MooseX::Traits" => "0.12",
     "Throwable" => 0,
@@ -32,7 +33,7 @@ my %WriteMakefileArgs = (
     "Test::LoadAllModules" => "0.021",
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.003",
+  "VERSION" => "0.004",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -41,6 +42,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Data::Verifier" => 0,
+  "List::MoreUtils" => 0,
   "Moose" => "2.1204",
   "MooseX::Traits" => "0.12",
   "Test::LoadAllModules" => "0.021",

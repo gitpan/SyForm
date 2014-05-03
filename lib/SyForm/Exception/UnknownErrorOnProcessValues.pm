@@ -1,8 +1,8 @@
-package SyForm::Exception::UnknownErrorOnProcess;
+package SyForm::Exception::UnknownErrorOnProcessValues;
 BEGIN {
-  $SyForm::Exception::UnknownErrorOnProcess::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Exception::UnknownErrorOnProcessValues::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::UnknownErrorOnProcess::VERSION = '0.004';
+$SyForm::Exception::UnknownErrorOnProcessValues::VERSION = '0.004';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -11,19 +11,19 @@ with qw(
   SyForm::Exception::Role::WithOriginalError
 );
 
-has process_args => (
+has process_values_args => (
   is => 'ro',
   isa => 'ArrayRef',
   required => 1,
 );
 
 sub throw_with_args {
-  my ( $class, $syform, $process_args, $error ) = @_;
-  $class->rethrow_syform_exception($error);
-  $class->throw($class->error_message_text($error).' on process',
+  my ( $class, $syform, $process_values_args, $original_error ) = @_;
+  $class->rethrow_syform_exception($original_error);
+  $class->throw($class->error_message_text($original_error).' on process_values',
     syform => $syform,
-    original_error => $error,
-    process_args => $process_args,
+    original_error => $original_error,
+    process_values_args => $process_values_args,
   );
 };
 
@@ -35,7 +35,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Exception::UnknownErrorOnProcess
+SyForm::Exception::UnknownErrorOnProcessValues
 
 =head1 VERSION
 

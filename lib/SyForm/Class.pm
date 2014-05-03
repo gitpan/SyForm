@@ -1,15 +1,12 @@
-package SyForm::Exception::Role::WithSyForm;
+package SyForm::Class;
 BEGIN {
-  $SyForm::Exception::Role::WithSyForm::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Class::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::Role::WithSyForm::VERSION = '0.004';
-use Moose::Role;
+# ABSTRACT: Make a SyForm class with fields
+$SyForm::Class::VERSION = '0.004';
+use Moose;
 
-has syform => (
-  is => 'ro',
-  does => 'SyForm',
-  required => 1,
-);
+# TODO
 
 1;
 
@@ -19,7 +16,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Exception::Role::WithSyForm
+SyForm::Class - Make a SyForm class with fields
 
 =head1 VERSION
 

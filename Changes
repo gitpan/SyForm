@@ -1,10 +1,25 @@
 ==================================================
-Changes from 1740-07-18 00:00:00 +0000 to present.
+Changes from 1740-07-19 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.003 at 2014-05-02 10:20:32 +0000
+version 0.004 at 2014-05-03 13:56:57 +0000
 ------------------------------------------
+
+  Change: 10738cb89b4ab765fe9770587adfbd17a307be7a
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-03 15:55:54 +0000
+
+    Adding of view layer, more clean splitting and roles now can be
+    automatically added to form BEFORE creation via field args, generally
+    all roles are now given by the previous step to even make it
+    dynamical 
+
+  Change: 7e2ea946122074fae3b98c2477daca350640e2c8
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-03 00:37:08 +0000
+
+    New exceptions with tests 
 
   Change: 855c9e6fbff389a8a36a40efe65b57a37cea2b8b
   Author: Torsten Raudssus <torsten@raudss.us>

@@ -16,6 +16,7 @@ meta-spec:
 name: SyForm
 requires:
   Data::Verifier: '0'
+  List::MoreUtils: '0'
   Moose: '2.1204'
   MooseX::Traits: '0.12'
   Throwable: '0'
@@ -24,7 +25,7 @@ requires:
 resources:
   homepage: https://github.com/SyContent/SyForm
   repository: https://github.com/SyContent/SyForm.git
-version: '0.003'
+version: '0.004'
 x_Dist_Zilla:
   perl:
     version: '5.018001'

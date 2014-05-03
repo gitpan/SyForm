@@ -2,11 +2,12 @@ package SyForm::Results;
 BEGIN {
   $SyForm::Results::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Results::VERSION = '0.003';
+$SyForm::Results::VERSION = '0.004';
 use Moose::Role;
 use namespace::autoclean;
 
 with qw(
+  MooseX::Traits
   SyForm::Fields
 );
 
@@ -16,13 +17,24 @@ with qw(
 
 has values => (
   is => 'ro',
-  isa => 'SyForm::Values',
+  does => 'SyForm::Values',
   required => 1,
   handles => [qw(
     syform
     field
   )],
 );
+
+sub get_result {
+  my ( $self, $name ) = @_;
+  $self->$name;
+}
+
+sub has_result {
+  my ( $self, $name ) = @_;
+  my $has_name = 'has_'.$name;
+  $self->$has_name;
+}
 
 1;
 
@@ -36,7 +48,7 @@ SyForm::Results
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 AUTHOR
 

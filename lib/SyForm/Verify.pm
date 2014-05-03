@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Main verification logic
-$SyForm::Verify::VERSION = '0.003';
+$SyForm::Verify::VERSION = '0.004';
 use Moose::Role;
 use Data::Verifier;
 use namespace::autoclean;
@@ -13,19 +13,6 @@ has verify_filters => (
   isa => 'ArrayRef[Str]',
   predicate => 'has_verify_filters',
 );
-
-around results_roles => sub {
-  my ( $orig, $self ) = @_;
-  my @result_roles = @{$self->$orig()};
-  for my $new_role (qw( SyForm::Results::Success SyForm::Results::Verify )) {
-    my $found = 0;
-    for my $role (@result_roles) {
-      $found = 1 if $role eq $new_role;
-    }
-    push @result_roles, $new_role unless $found;
-  }
-  return [ @result_roles ];
-};
 
 around create_results => sub {
   my ( $orig, $self, $values, %args ) = @_;
@@ -77,7 +64,7 @@ SyForm::Verify - Main verification logic
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 AUTHOR
 

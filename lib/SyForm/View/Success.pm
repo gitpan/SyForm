@@ -1,9 +1,9 @@
-package SyForm::Results::Success;
+package SyForm::View::Success;
 BEGIN {
-  $SyForm::Results::Success::AUTHORITY = 'cpan:GETTY';
+  $SyForm::View::Success::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT:
-$SyForm::Results::Success::VERSION = '0.004';
+$SyForm::View::Success::VERSION = '0.004';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -14,8 +14,15 @@ use namespace::autoclean;
 has success => (
   is => 'ro',
   isa => 'Bool',
-  required => 1,
+  lazy_build => 1,
 );
+
+sub _build_success {
+  my ( $self ) = @_;
+  return $self->results->does('SyForm::Results::Success')
+    ? $self->results->success
+    : 1;
+}
 
 1;
 
@@ -25,7 +32,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Results::Success - $SyForm::Results::Success::VERSION = '0.004';
+SyForm::View::Success - $SyForm::View::Success::VERSION = '0.004';
 
 =head1 VERSION
 

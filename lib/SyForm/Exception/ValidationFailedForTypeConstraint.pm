@@ -2,7 +2,7 @@ package SyForm::Exception::ValidationFailedForTypeConstraint;
 BEGIN {
   $SyForm::Exception::ValidationFailedForTypeConstraint::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::ValidationFailedForTypeConstraint::VERSION = '0.003';
+$SyForm::Exception::ValidationFailedForTypeConstraint::VERSION = '0.004';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -48,7 +48,7 @@ SyForm::Exception::ValidationFailedForTypeConstraint
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 AUTHOR
 

@@ -1,24 +1,29 @@
-package SyForm::Exception::UnknownErrorOnCreate;
+package SyForm::Exception::UnexpectedArgToCreate;
 BEGIN {
-  $SyForm::Exception::UnknownErrorOnCreate::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Exception::UnexpectedArgToCreate::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::UnknownErrorOnCreate::VERSION = '0.004';
+$SyForm::Exception::UnexpectedArgToCreate::VERSION = '0.004';
 use Moose;
 extends 'SyForm::Exception';
 
 with qw(
-  SyForm::Exception::Role::WithOriginalError
   SyForm::Exception::Role::WithCreateArgs
 );
 
+has error_ref => (
+  is => 'ro',
+  isa => 'Str',
+  required => 1,
+);
+
 sub throw_with_args {
-  my ( $class, $create_args, $error ) = @_;
-  $class->rethrow_syform_exception($error);
-  $class->throw($class->error_message_text($error).' on create',
+  my ( $class, $create_args, $ref ) = @_;
+  $class->throw('Unexpected parameter to create with reference type ('.
+    $ref.').',
     create_args => $create_args,
-    original_error => $error,
+    error_ref => $ref,
   );
-}
+};
 
 1;
 
@@ -28,7 +33,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Exception::UnknownErrorOnCreate
+SyForm::Exception::UnexpectedArgToCreate
 
 =head1 VERSION
 
