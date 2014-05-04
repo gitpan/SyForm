@@ -2,7 +2,7 @@ package SyForm::Exception::Role::WithCreateArgs;
 BEGIN {
   $SyForm::Exception::Role::WithCreateArgs::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::Role::WithCreateArgs::VERSION = '0.006';
+$SyForm::Exception::Role::WithCreateArgs::VERSION = '0.007';
 use Moose::Role;
 
 has create_args => (
@@ -23,7 +23,7 @@ SyForm::Exception::Role::WithCreateArgs
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 AUTHOR
 

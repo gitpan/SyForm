@@ -1,17 +1,22 @@
-package SyForm::Field::Label;
+package SyForm::View::Errors;
 BEGIN {
-  $SyForm::Field::Label::AUTHORITY = 'cpan:GETTY';
+  $SyForm::View::Errors::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: A label for a field
-$SyForm::Field::Label::VERSION = '0.007';
+# ABSTRACT: Errors on the form itself
+$SyForm::View::Errors::VERSION = '0.007';
 use Moose::Role;
 use namespace::autoclean;
 
-has label => (
+has errors => (
   is => 'ro',
-  isa => 'Str',
-  predicate => 'has_label',
+  isa => 'ArrayRef[Str]',
+  lazy_build => 1,
 );
+
+sub _build_errors {
+  my ( $self ) = @_;
+  [];
+}
 
 1;
 
@@ -21,7 +26,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Field::Label - A label for a field
+SyForm::View::Errors - Errors on the form itself
 
 =head1 VERSION
 

@@ -2,19 +2,11 @@ package SyForm::Fields;
 BEGIN {
   $SyForm::Fields::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Fields::VERSION = '0.006';
+$SyForm::Fields::VERSION = '0.007';
 use Moose::Role;
 use namespace::autoclean;
 
-sub as_hashref {
-  my ( $self ) = @_;
-  my %hashref;
-  for my $name (@{$self->field_names}) {
-    my $has = 'has_'.$name;
-    $hashref{$name} = $self->$name if $self->$has;
-  }
-  return { %hashref };
-}
+requires 'as_hashref';
 
 has field_names => (
   is => 'ro',
@@ -34,7 +26,7 @@ SyForm::Fields
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 AUTHOR
 

@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Field::Readonly::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: TODO
-$SyForm::Field::Readonly::VERSION = '0.006';
+$SyForm::Field::Readonly::VERSION = '0.007';
 die "TODO";
 
 use Moose::Role;
@@ -27,7 +27,7 @@ SyForm::Field::Readonly - TODO
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 AUTHOR
 

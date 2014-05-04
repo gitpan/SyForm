@@ -2,7 +2,7 @@ package SyForm::Exception::UnexpectedValueOnViewFieldRoles;
 BEGIN {
   $SyForm::Exception::UnexpectedValueOnViewFieldRoles::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::UnexpectedValueOnViewFieldRoles::VERSION = '0.006';
+$SyForm::Exception::UnexpectedValueOnViewFieldRoles::VERSION = '0.007';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -37,7 +37,7 @@ SyForm::Exception::UnexpectedValueOnViewFieldRoles
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 AUTHOR
 

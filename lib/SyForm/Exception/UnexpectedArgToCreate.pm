@@ -2,7 +2,7 @@ package SyForm::Exception::UnexpectedArgToCreate;
 BEGIN {
   $SyForm::Exception::UnexpectedArgToCreate::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::UnexpectedArgToCreate::VERSION = '0.006';
+$SyForm::Exception::UnexpectedArgToCreate::VERSION = '0.007';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -37,7 +37,7 @@ SyForm::Exception::UnexpectedArgToCreate
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 AUTHOR
 

@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::ViewField::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for fields inside a View
-$SyForm::ViewField::VERSION = '0.006';
+$SyForm::ViewField::VERSION = '0.007';
 use Moose::Role;
 
 with qw(
@@ -71,7 +71,7 @@ SyForm::ViewField - Role for fields inside a View
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 AUTHOR
 

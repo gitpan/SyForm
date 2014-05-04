@@ -1,16 +1,17 @@
-package SyForm::Field::Label;
+package SyForm::Exception::Role::WithSyFormValues;
 BEGIN {
-  $SyForm::Field::Label::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Exception::Role::WithSyFormValues::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: A label for a field
-$SyForm::Field::Label::VERSION = '0.007';
+$SyForm::Exception::Role::WithSyFormValues::VERSION = '0.007';
 use Moose::Role;
-use namespace::autoclean;
 
-has label => (
+has values => (
   is => 'ro',
-  isa => 'Str',
-  predicate => 'has_label',
+  does => 'SyForm::Values',
+  required => 1,
+  handles => [qw(
+    syform
+  )],
 );
 
 1;
@@ -21,7 +22,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Field::Label - A label for a field
+SyForm::Exception::Role::WithSyFormValues
 
 =head1 VERSION
 

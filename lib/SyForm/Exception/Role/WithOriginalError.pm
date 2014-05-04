@@ -2,7 +2,7 @@ package SyForm::Exception::Role::WithOriginalError;
 BEGIN {
   $SyForm::Exception::Role::WithOriginalError::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::Role::WithOriginalError::VERSION = '0.006';
+$SyForm::Exception::Role::WithOriginalError::VERSION = '0.007';
 use Moose::Role;
 
 has original_error => (
@@ -39,7 +39,7 @@ SyForm::Exception::Role::WithOriginalError
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 AUTHOR
 

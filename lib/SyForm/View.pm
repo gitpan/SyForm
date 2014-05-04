@@ -2,7 +2,7 @@ package SyForm::View;
 BEGIN {
   $SyForm::View::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::View::VERSION = '0.006';
+$SyForm::View::VERSION = '0.007';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -140,7 +140,7 @@ SyForm::View
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 AUTHOR
 
