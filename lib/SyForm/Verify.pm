@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Main verification logic
-$SyForm::Verify::VERSION = '0.005';
+$SyForm::Verify::VERSION = '0.006';
 use Moose::Role;
 use Data::Verifier;
 use namespace::autoclean;
@@ -14,17 +14,29 @@ has verify_filters => (
   predicate => 'has_verify_filters',
 );
 
+has verify_process_fields => (
+  is => 'ro',
+  isa => 'ArrayRef[SyForm::Field]',
+  lazy_build => 1,
+);
+
+sub _build_verify_process_fields {
+  my ( $self ) = @_;
+  return [grep { $_->does('SyForm::Field::Verify') } @{$self->process_fields}];
+}
+
 around create_results => sub {
   my ( $orig, $self, $values, %args ) = @_;
   my $no_success = exists $args{success} && !$args{success} ? 1 : 0;
   my $verify_results = $self->verify_values($values);
-  unless ($verify_results->success) {
-    for my $field (@{$self->process_fields}) {
-      if ($verify_results->is_invalid($field->name)) {
-        unless ($field->no_delete_on_invalid_result) {
-          delete $args{$field->name} if exists $args{$field->name};
-        }
+  for my $field (@{$self->verify_process_fields}) {
+    if ($verify_results->is_invalid($field->name)) {
+      unless ($field->no_delete_on_invalid_result) {
+        delete $args{$field->name} if exists $args{$field->name};
       }
+    } elsif (exists $args{$field->name}) {
+      my $verified_value = $verify_results->get_value($field->name);
+      $args{$field->name} = $verified_value;
     }
   }
   $args{success} = $no_success ? 0 : $verify_results->success ? 1 : 0; 
@@ -36,12 +48,13 @@ sub verify_values {
   my ( $self, $values ) = @_;
   my %profile;
   for my $field (@{$self->process_fields}) {
-    next unless $field->does('SyForm::Field::Verify');
     my $name = $field->name;
     my %args;
-    $args{required} = $field->required if $field->has_required;
-    $args{type} = $field->type if $field->type;
-    $args{filters} = $field->verify_filters if $field->has_verify_filters;
+    if ($field->does('SyForm::Field::Verify')) {
+      $args{required} = $field->required if $field->has_required;
+      $args{type} = $field->type if $field->type;
+      $args{filters} = $field->verify_filters if $field->has_verify_filters;
+    }
     if (%args) {
       $profile{$name} = { %args };
     }
@@ -65,7 +78,7 @@ SyForm::Verify - Main verification logic
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 AUTHOR
 

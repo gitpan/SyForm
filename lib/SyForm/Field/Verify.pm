@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Field::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Required field
-$SyForm::Field::Verify::VERSION = '0.005';
+$SyForm::Field::Verify::VERSION = '0.006';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -42,6 +42,7 @@ around results_roles_by_values => sub {
 around viewfield_roles_by_results => sub {
   my ( $orig, $self, $results ) = @_;
   return $self->$orig($results), qw(
+    SyForm::ViewField::Verify
   );
 };
 
@@ -64,7 +65,7 @@ SyForm::Field::Verify - Required field
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 AUTHOR
 

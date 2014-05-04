@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Field::Process::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for processed fields
-$SyForm::Field::Process::VERSION = '0.005';
+$SyForm::Field::Process::VERSION = '0.006';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -92,6 +92,11 @@ sub custom_view_args_by_results {
   return;
 }
 
+sub viewfield_args_by_results {
+  my ( $self, $results ) = @_;
+  return;
+}
+
 sub view_roles_by_results {
   my ( $self, $values ) = @_;
   return;
@@ -114,7 +119,7 @@ SyForm::Field::Process - Role for processed fields
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 AUTHOR
 

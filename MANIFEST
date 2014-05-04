@@ -45,6 +45,7 @@ lib/SyForm/View.pm
 lib/SyForm/View/Success.pm
 lib/SyForm/View/Verify.pm
 lib/SyForm/ViewField.pm
+lib/SyForm/ViewField/Verify.pm
 t/default.t
 t/exceptions.t
 t/html.t

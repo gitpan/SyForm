@@ -2,7 +2,7 @@ package SyForm::View;
 BEGIN {
   $SyForm::View::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::View::VERSION = '0.005';
+$SyForm::View::VERSION = '0.006';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -98,8 +98,11 @@ sub _build_fields {
   my %viewfield_roles = %{$self->viewfield_roles};
   my %fields;
   for my $field ($self->syform->fields->Values) {
+    my %viewfield_args = $field->viewfield_args_by_results($self->results);
     my @traits = defined $viewfield_roles{$field->name}
       ? (@{$viewfield_roles{$field->name}}) : ();
+    push @traits, @{delete $viewfield_args{roles}}
+        if defined $viewfield_args{roles};
     $fields{$field->name} = $self->create_viewfield($field,
       field => $field,
       roles => [ @traits ],
@@ -137,7 +140,7 @@ SyForm::View
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 AUTHOR
 

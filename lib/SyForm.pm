@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: SyForm - a role driven form management
-$SyForm::VERSION = '0.005';
+$SyForm::VERSION = '0.006';
 use Moose::Role;
 use Tie::IxHash;
 use Carp qw( croak );
@@ -286,7 +286,7 @@ SyForm - SyForm - a role driven form management
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -333,7 +333,7 @@ version 0.005
     } else {
       my $verified_result_if_exist = $view->field($_)->result;
     }
-    # for access to the main B<SyForm::Field> of the view field
+    # for access to the main SyForm::Field of the view field
     my $syform_field = $view->field($_)->field;
   }
 
@@ -341,11 +341,12 @@ version 0.005
 
 SyForm is developed for L<SyContent|https://sycontent.de/>.
 
-B<SyForm> has many B<SyForm::Field>.
+B<SyForm> has many B<SyForm::Field>. You get a form object with calling
+B<create([@fields], %form_args)> on B<SyForm>.
 
 With B<SyForm::Process> (automatically added) you can give it B<process_args>
 via calling of B<process(%args)> on your form object that you get from the
-B<create>.
+create.
 
 This call to process creates internally a B<SyForm::Values> out of the process
 args together with the help of the fields. Those again use this to produce a

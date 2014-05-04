@@ -51,7 +51,7 @@
          "web" : "https://github.com/SyContent/SyForm"
       }
    },
-   "version" : "0.005",
+   "version" : "0.006",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.018001"

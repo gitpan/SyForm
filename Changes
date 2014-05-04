@@ -3,8 +3,22 @@ Changes from 1740-07-20 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.005 at 2014-05-04 01:19:31 +0000
+version 0.006 at 2014-05-04 04:30:13 +0000
 ------------------------------------------
+
+  Change: af17905d860c42f79dd09b6a89a2b6d394c9d377
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-04 06:29:29 +0000
+
+    Much smoother view field handling, fixed a lot of troubles around
+    defaults and verify, starting to use verify filters result if verify
+    is in use 
+
+  Change: 5aadd04a32f93a79f26560a87ce0648e31f987a0
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-04 03:30:06 +0000
+
+    doc fixes 
 
   Change: 1fef2b2d6e360da866907b9d83f136676928b3ad
   Author: Torsten Raudssus <torsten@raudss.us>
