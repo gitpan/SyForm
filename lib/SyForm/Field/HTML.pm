@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Field::HTML::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: HTML attributes for a field
-$SyForm::Field::HTML::VERSION = '0.004';
+$SyForm::Field::HTML::VERSION = '0.005';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -36,7 +36,7 @@ SyForm::Field::HTML - HTML attributes for a field
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 

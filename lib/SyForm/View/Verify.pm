@@ -1,13 +1,15 @@
-package SyForm::Exception::Role::WithSyForm;
+package SyForm::View::Verify;
 BEGIN {
-  $SyForm::Exception::Role::WithSyForm::AUTHORITY = 'cpan:GETTY';
+  $SyForm::View::Verify::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::Role::WithSyForm::VERSION = '0.005';
+# ABSTRACT: Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
+$SyForm::View::Verify::VERSION = '0.005';
 use Moose::Role;
+use namespace::autoclean;
 
-has syform => (
+has verify_results => (
   is => 'ro',
-  does => 'SyForm',
+  isa => 'Data::Verifier::Results',
   required => 1,
 );
 
@@ -19,7 +21,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Exception::Role::WithSyForm
+SyForm::View::Verify - Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
 
 =head1 VERSION
 

@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Field::Default::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: A default for a field
-$SyForm::Field::Default::VERSION = '0.004';
+$SyForm::Field::Default::VERSION = '0.005';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -23,11 +23,10 @@ around has_value_by_args => sub {
   return 0;
 };
 
-around get_value_by_args => sub {
+around get_value_by_process_args => sub {
   my ( $orig, $self, %args ) = @_;
-  return $self->$orig(%args) if $self->has_value_by_args(%args);
-  return $self->default if $self->has_default;
-  SyForm->throw( UnexpectedCallToGetValueByArgs => $self );
+  return $self->default if !exists($args{$self->name}) && $self->has_default;
+  return $self->$orig(%args);
 };
 
 1;
@@ -42,7 +41,7 @@ SyForm::Field::Default - A default for a field
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 

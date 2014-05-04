@@ -16,6 +16,7 @@ lib/SyForm/Exception/Role/WithOriginalError.pm
 lib/SyForm/Exception/Role/WithSyForm.pm
 lib/SyForm/Exception/Role/WithSyFormField.pm
 lib/SyForm/Exception/UnexpectedArgToCreate.pm
+lib/SyForm/Exception/UnexpectedValueOnViewFieldRoles.pm
 lib/SyForm/Exception/UnknownErrorOnBuildField.pm
 lib/SyForm/Exception/UnknownErrorOnBuildFields.pm
 lib/SyForm/Exception/UnknownErrorOnCreate.pm
@@ -42,7 +43,9 @@ lib/SyForm/Values.pm
 lib/SyForm/Verify.pm
 lib/SyForm/View.pm
 lib/SyForm/View/Success.pm
+lib/SyForm/View/Verify.pm
 lib/SyForm/ViewField.pm
+t/default.t
 t/exceptions.t
 t/html.t
 t/load.t

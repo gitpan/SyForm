@@ -1,10 +1,28 @@
 ==================================================
-Changes from 1740-07-19 00:00:00 +0000 to present.
+Changes from 1740-07-20 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.004 at 2014-05-03 13:56:57 +0000
+version 0.005 at 2014-05-04 01:19:31 +0000
 ------------------------------------------
+
+  Change: 1fef2b2d6e360da866907b9d83f136676928b3ad
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-04 03:18:56 +0000
+
+    Documentation! Documentation! Documentation! Documentation! 
+
+  Change: 207784ad8fbb542efeaa7d763340f4ef37fbeb5c
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-04 03:01:42 +0000
+
+    Small fixes on the exceptions 
+
+  Change: fd1cee2f5f5ccc39e94b67d7e72f2a17ba4219dc
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-04 02:56:22 +0000
+
+    Ok now the view code really works, and defaults... hurray! 
 
   Change: 10738cb89b4ab765fe9770587adfbd17a307be7a
   Author: Torsten Raudssus <torsten@raudss.us>

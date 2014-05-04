@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Field::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for fields in SyForm
-$SyForm::Field::VERSION = '0.004';
+$SyForm::Field::VERSION = '0.005';
 use Moose::Role;
 
 with qw(
@@ -42,7 +42,7 @@ SyForm::Field - Role for fields in SyForm
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 

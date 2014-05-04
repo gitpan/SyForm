@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Class::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Make a SyForm class with fields
-$SyForm::Class::VERSION = '0.004';
+$SyForm::Class::VERSION = '0.005';
 use Moose;
 
 # TODO
@@ -20,7 +20,7 @@ SyForm::Class - Make a SyForm class with fields
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 

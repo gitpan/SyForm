@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Main verification logic
-$SyForm::Verify::VERSION = '0.004';
+$SyForm::Verify::VERSION = '0.005';
 use Moose::Role;
 use Data::Verifier;
 use namespace::autoclean;
@@ -36,6 +36,7 @@ sub verify_values {
   my ( $self, $values ) = @_;
   my %profile;
   for my $field (@{$self->process_fields}) {
+    next unless $field->does('SyForm::Field::Verify');
     my $name = $field->name;
     my %args;
     $args{required} = $field->required if $field->has_required;
@@ -64,7 +65,7 @@ SyForm::Verify - Main verification logic
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 

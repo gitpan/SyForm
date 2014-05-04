@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Field::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Required field
-$SyForm::Field::Verify::VERSION = '0.004';
+$SyForm::Field::Verify::VERSION = '0.005';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -34,7 +34,21 @@ has no_delete_on_invalid_result => (
 around results_roles_by_values => sub {
   my ( $orig, $self, $values ) = @_;
   return $self->$orig($values), qw(
-    SyForm::Results::Success SyForm::Results::Verify
+    SyForm::Results::Success
+    SyForm::Results::Verify
+  );
+};
+
+around viewfield_roles_by_results => sub {
+  my ( $orig, $self, $results ) = @_;
+  return $self->$orig($results), qw(
+  );
+};
+
+around view_roles_by_results => sub {
+  my ( $orig, $self, $results ) = @_;
+  return $self->$orig($results), qw(
+    SyForm::View::Success
   );
 };
 
@@ -50,7 +64,7 @@ SyForm::Field::Verify - Required field
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 

@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Label::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: A label for a form
-$SyForm::Label::VERSION = '0.004';
+$SyForm::Label::VERSION = '0.005';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -25,7 +25,7 @@ SyForm::Label - A label for a form
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 

@@ -3,13 +3,21 @@ BEGIN {
   $SyForm::ViewField::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for fields inside a View
-$SyForm::ViewField::VERSION = '0.004';
+$SyForm::ViewField::VERSION = '0.005';
 use Moose::Role;
+
+with qw(
+  MooseX::Traits
+);
 
 has view => (
   is => 'ro',
   isa => 'SyForm::View',
   required => 1,
+  handles => [qw(
+    viewfield
+    results
+  )],
 );
 
 has field => (
@@ -45,6 +53,12 @@ sub result {
   $self->results->get_result($name);
 }
 
+sub val {
+  my ( $self ) = @_;
+  return $self->result if $self->has_result;
+  return $self->value if $self->has_value;
+}
+
 1;
 
 __END__
@@ -57,7 +71,7 @@ SyForm::ViewField - Role for fields inside a View
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 

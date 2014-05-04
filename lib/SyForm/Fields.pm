@@ -2,7 +2,7 @@ package SyForm::Fields;
 BEGIN {
   $SyForm::Fields::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Fields::VERSION = '0.004';
+$SyForm::Fields::VERSION = '0.005';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -34,7 +34,7 @@ SyForm::Fields
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 

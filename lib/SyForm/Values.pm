@@ -2,7 +2,7 @@ package SyForm::Values;
 BEGIN {
   $SyForm::Values::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Values::VERSION = '0.004';
+$SyForm::Values::VERSION = '0.005';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -43,7 +43,7 @@ SyForm::Values
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 

@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Results::Success::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT:
-$SyForm::Results::Success::VERSION = '0.004';
+$SyForm::Results::Success::VERSION = '0.005';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -25,11 +25,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Results::Success - $SyForm::Results::Success::VERSION = '0.004';
+SyForm::Results::Success - $SyForm::Results::Success::VERSION = '0.005';
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 AUTHOR
 
