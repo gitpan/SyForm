@@ -3,9 +3,9 @@ BEGIN {
   $SyForm::ViewField::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
-$SyForm::ViewField::Verify::VERSION = '0.008';
+$SyForm::ViewField::Verify::VERSION = '0.009';
 use Moose::Role;
-use namespace::clean;
+use namespace::clean -except => 'meta';
 
 sub is_invalid {
   my ( $self ) = @_;
@@ -56,7 +56,7 @@ SyForm::ViewField::Verify - Trait for SyForm fields of SyForm::Results and SyFor
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

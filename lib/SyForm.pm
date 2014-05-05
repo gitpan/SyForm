@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: A role driven, readonly attributes, form management
-$SyForm::VERSION = '0.008';
+$SyForm::VERSION = '0.009';
 
 use Moose::Role;
 use Tie::IxHash;
@@ -38,6 +38,7 @@ our $default_object_class = 'Moose::Object';
 
 our %default_form_roles_by_arg = (
   label => 'SyForm::Label',
+  object => 'SyForm::Object',
 );
 
 our %default_field_roles_by_arg = (
@@ -228,12 +229,14 @@ sub throw {
       }      
       my $process_role = delete $args{process_role} || 'SyForm::Process';
       my $no_process = delete $args{no_process};
-      my $roles = delete $args{roles} || [];
-      unshift @{$roles}, $process_role unless $no_process;
-      unshift @{$roles}, $class;
+      if (defined $args{roles}) {
+        push @roles, @{delete $args{roles}};
+      }
+      unshift @roles, $process_role unless $no_process;
+      unshift @roles, $class;
       for my $arg (keys %form_roles_by_arg) {
         if (defined $args{$arg}) {
-          push @{$roles}, $form_roles_by_arg{$arg};
+          push @roles, $form_roles_by_arg{$arg};
         }
       }
       my $fields_list = Tie::IxHash->new(@field_list_args);
@@ -241,7 +244,7 @@ sub throw {
         my %field_args = %{$fields_list->FETCH($name)};
         for my $arg (keys %default_form_roles_by_field_arg) {
           if (defined $field_args{$arg}) {
-            push @{$roles}, $default_form_roles_by_field_arg{$arg};
+            push @roles, $default_form_roles_by_field_arg{$arg};
           }
         }
       }
@@ -256,8 +259,8 @@ sub throw {
           $form_default_object_class || $default_object_class;
         my $form_metaclass = Moose::Meta::Class->create(
           $class_name ? $class_name : $class.'::__GENERATED__::'.$CLASS_SERIAL++,
-          superclasses => [$object_class],
-          roles => $roles,
+          superclasses => [ $object_class ],
+          roles => [ @roles ],
         );
         $form_class = $form_metaclass->name;
       }
@@ -288,7 +291,7 @@ SyForm - A role driven, readonly attributes, form management
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

@@ -3,8 +3,33 @@ Changes from 1740-07-21 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.008 at 2014-05-05 01:50:33 +0000
+version 0.009 at 2014-05-05 04:17:32 +0000
 ------------------------------------------
+
+  Change: fe2e252bf3fb71f43d202ce6ef37ea57fbca697a
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-05 06:17:26 +0000
+
+    More tests for object 
+
+  Change: 5bcaa6c450269c30ddda6d420d3d7a0aa585b2cd
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-05 06:10:54 +0000
+
+    Fixing object functionality and making adding roles to results and
+    view easier with central form roles 
+
+  Change: 6fece344ee232415bdf940db73f01b76ff9cfb1e
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-05 05:48:11 +0000
+
+    Updated load test 
+
+  Change: 32eeaf1e78c32cc91da194a8050d6156dcf9082d
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-05 05:47:21 +0000
+
+    Object functionality and a lot of cleanup 
 
   Change: 651daaaa7a6cba40a2035d3c55db63f3c8c58591
   Author: Torsten Raudssus <torsten@raudss.us>

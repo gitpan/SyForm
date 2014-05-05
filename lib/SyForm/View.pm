@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::View::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Container for SyForm::Results and SyForm::ViewField
-$SyForm::View::VERSION = '0.008';
+$SyForm::View::VERSION = '0.009';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
@@ -116,7 +116,7 @@ sub create_viewfield {
   my ( $self, $field, %args ) = @_;
   my @traits = @{delete $args{roles}};
   return $self->viewfield_class->new_with_traits({
-    traits => [@traits],
+    scalar @traits ? ( traits => [@traits] ) : (),
     field => $field,
     view => $self,
     %args,
@@ -141,7 +141,7 @@ SyForm::View - Container for SyForm::Results and SyForm::ViewField
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

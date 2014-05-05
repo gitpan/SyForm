@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Exception::UnexpectedValueOnViewFieldRoles::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: viewfield_roles of the field is not giving back valid roles
-$SyForm::Exception::UnexpectedValueOnViewFieldRoles::VERSION = '0.008';
+$SyForm::Exception::UnexpectedValueOnViewFieldRoles::VERSION = '0.009';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -38,7 +38,7 @@ SyForm::Exception::UnexpectedValueOnViewFieldRoles - viewfield_roles of the fiel
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

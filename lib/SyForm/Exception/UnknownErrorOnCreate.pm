@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Exception::UnknownErrorOnCreate::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Exception at SyForm->create
-$SyForm::Exception::UnknownErrorOnCreate::VERSION = '0.008';
+$SyForm::Exception::UnknownErrorOnCreate::VERSION = '0.009';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -33,7 +33,7 @@ SyForm::Exception::UnknownErrorOnCreate - Exception at SyForm->create
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

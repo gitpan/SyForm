@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Fields::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for SyForm::Values and SyForm::Results holding the fields
-$SyForm::Fields::VERSION = '0.008';
+$SyForm::Fields::VERSION = '0.009';
 use Moose::Role;
 ################ TODO
 # use overload
@@ -34,7 +34,7 @@ SyForm::Fields - Role for SyForm::Values and SyForm::Results holding the fields
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

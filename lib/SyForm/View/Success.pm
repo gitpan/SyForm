@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::View::Success::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Fetching success value from SyForn::Results of give back true
-$SyForm::View::Success::VERSION = '0.008';
+$SyForm::View::Success::VERSION = '0.009';
 use Moose::Role;
 #use overload q{bool} => sub { $_[0]->success ? 1 : 0 }, fallback => 1;
 use namespace::clean -except => 'meta';
@@ -32,7 +32,7 @@ SyForm::View::Success - Fetching success value from SyForn::Results of give back
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

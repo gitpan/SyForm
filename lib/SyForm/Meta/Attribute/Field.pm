@@ -3,13 +3,13 @@ BEGIN {
   $SyForm::Meta::Attribute::Field::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for SyForm fields meta attributes
-$SyForm::Meta::Attribute::Field::VERSION = '0.008';
+$SyForm::Meta::Attribute::Field::VERSION = '0.009';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
 has field => (
   is => 'ro',
-  isa => 'SyForm::Field',
+  does => 'SyForm::Field',
   required => 1,
   handles => [qw(
     syform
@@ -28,7 +28,7 @@ SyForm::Meta::Attribute::Field - Role for SyForm fields meta attributes
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

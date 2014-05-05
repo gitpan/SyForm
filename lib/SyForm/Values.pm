@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Values::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Values given of the fields through the process args
-$SyForm::Values::VERSION = '0.008';
+$SyForm::Values::VERSION = '0.009';
 use Moose::Role;
 use List::MoreUtils qw( uniq );
 use namespace::clean -except => 'meta';
@@ -40,7 +40,7 @@ sub _build_results {
   my $results;
   eval {
     my %results_args;
-    my @results_traits;
+    my @results_traits = @{$self->results_roles};
     for my $field (@{$self->syform->process_fields}) {
       my %field_results_args = $field->results_args_by_values($self);
       push @results_traits, @{delete $field_results_args{roles}}
@@ -66,7 +66,7 @@ sub create_results {
     $results{$_} = delete $args{$_} if defined $args{$_};
   }
   return $self->results_class->new_with_traits({
-    traits => [@traits],
+    scalar @traits ? ( traits => [@traits] ) : (),
     values => $self,
     results => { %results },
     %args
@@ -83,9 +83,24 @@ sub _build_results_object_class { $_[0]->syform->object_class }
 has results_roles => (
   isa => 'ArrayRef[Str]',
   is => 'ro',
-  lazy => 1,
-  default => sub {[]},
+  lazy_build => 1,
 );
+
+sub _build_results_roles {
+  my ( $self ) = @_;
+  return $self->syform->results_roles;
+}
+
+has view_roles => (
+  isa => 'ArrayRef[Str]',
+  is => 'ro',
+  lazy_build => 1,
+);
+
+sub _build_view_roles {
+  my ( $self ) = @_;
+  return $self->syform->view_roles;
+}
 
 sub _get_results_meta_attribute {
   my ( $self, $field, %args ) = @_; 
@@ -145,7 +160,7 @@ SyForm::Values - Values given of the fields through the process args
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

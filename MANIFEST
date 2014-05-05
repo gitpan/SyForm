@@ -36,14 +36,18 @@ lib/SyForm/Field/Verify.pm
 lib/SyForm/Fields.pm
 lib/SyForm/Label.pm
 lib/SyForm/Meta/Attribute/Field.pm
+lib/SyForm/Object.pm
 lib/SyForm/Process.pm
 lib/SyForm/Results.pm
+lib/SyForm/Results/Object.pm
 lib/SyForm/Results/Success.pm
 lib/SyForm/Results/Verify.pm
 lib/SyForm/Values.pm
+lib/SyForm/Values/Object.pm
 lib/SyForm/Values/Verify.pm
 lib/SyForm/Verify.pm
 lib/SyForm/View.pm
+lib/SyForm/View/Object.pm
 lib/SyForm/View/Success.pm
 lib/SyForm/View/Verify.pm
 lib/SyForm/ViewField.pm
@@ -52,6 +56,7 @@ t/default.t
 t/exceptions.t
 t/html.t
 t/load.t
+t/object.t
 t/release-pod-syntax.t
 t/simple.t
 t/verify.t

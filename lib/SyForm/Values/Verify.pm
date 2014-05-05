@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Values::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Verification of values for the SyForm::Results
-$SyForm::Values::Verify::VERSION = '0.008';
+$SyForm::Values::Verify::VERSION = '0.009';
 use Moose::Role;
 use Validation::Class::Simple;
 use namespace::clean -except => 'meta';
@@ -52,7 +52,7 @@ sub verify_values {
       $params{$name} = $values->get_value($name)
         if $values->has_value($name) || $field->required;
       # required case, cause Validate::Class doesnt really
-      # check for required if the params doesnt exist. 
+      # check for required if the param doesnt exist. 
     }
   }
   return Validation::Class::Simple->new(
@@ -73,7 +73,7 @@ SyForm::Values::Verify - Verification of values for the SyForm::Results
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

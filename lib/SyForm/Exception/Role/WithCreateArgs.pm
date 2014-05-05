@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Exception::Role::WithCreateArgs::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for exceptions around the create process
-$SyForm::Exception::Role::WithCreateArgs::VERSION = '0.008';
+$SyForm::Exception::Role::WithCreateArgs::VERSION = '0.009';
 use Moose::Role;
 
 has create_args => (
@@ -24,7 +24,7 @@ SyForm::Exception::Role::WithCreateArgs - Role for exceptions around the create 
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

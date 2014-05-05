@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Results::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Results of the processing of SyForm::Values
-$SyForm::Results::VERSION = '0.008';
+$SyForm::Results::VERSION = '0.009';
 use Moose::Role;
 use List::MoreUtils qw( uniq );
 use namespace::clean -except => 'meta';
@@ -42,7 +42,7 @@ sub _build_view {
   eval {
     my %view_args;
     my %viewfield_traits;
-    my @view_traits;
+    my @view_traits = @{$self->view_roles};
     for my $field (@{$self->syform->process_fields}) {
       my %field_view_args = $field->view_args_by_results($self);
       push @view_traits, @{delete $field_view_args{roles}}
@@ -81,7 +81,7 @@ sub create_view {
   my @traits = @{delete $args{roles}};
   my %viewfield_traits = %{delete $args{viewfield_roles}};
   return $self->view_class->new_with_traits({
-    traits => [ @traits ],
+    scalar @traits ? ( traits => [@traits] ) : (),
     results => $self,
     viewfield_roles => { %viewfield_traits },
     %args,
@@ -108,9 +108,13 @@ sub _build_view_object_class { $_[0]->syform->object_class }
 has view_roles => (
   isa => 'ArrayRef[Str]',
   is => 'ro',
-  lazy => 1,
-  default => sub {[]},
+  lazy_build => 1,
 );
+
+sub _build_view_roles {
+  my ( $self ) = @_;
+  return $self->values->view_roles;
+}
 
 has _view_metaclass => (
   isa => 'Moose::Meta::Class',
@@ -150,7 +154,7 @@ SyForm::Results - Results of the processing of SyForm::Values
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 AUTHOR
 

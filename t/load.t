@@ -28,22 +28,24 @@ for (qw(
   SyForm::Field::HTML
   SyForm::Field::Label
   SyForm::Field::Process
-
   SyForm::Fields
   SyForm::Field::Verify
   SyForm::Label
   SyForm::Meta::Attribute::Field
+  SyForm::Object
   SyForm::Process
   SyForm::Results
+  SyForm::Results::Object
   SyForm::Results::Success
   SyForm::Results::Verify
   SyForm::Values
+  SyForm::Values::Object
   SyForm::Values::Verify
   SyForm::Verify
   SyForm::View
-  SyForm::View::Errors
   SyForm::ViewField
   SyForm::ViewField::Verify
+  SyForm::View::Object
   SyForm::View::Success
   SyForm::View::Verify
 )) {

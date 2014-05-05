@@ -1,21 +1,21 @@
-package SyForm::View::Verify;
+package SyForm::Values::Object;
 BEGIN {
-  $SyForm::View::Verify::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Values::Object::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
-$SyForm::View::Verify::VERSION = '0.009';
+# ABSTRACT: Functionality for SyForm::Values to deliver a Moose object
+$SyForm::Values::Object::VERSION = '0.009';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
-has error_count => (
+has object => (
   is => 'ro',
-  isa => 'Int',
+  isa => 'Moose::Object',
   lazy_build => 1,
 );
 
-sub _build_error_count {
+sub _build_object {
   my ( $self ) = @_;
-  $self->results->error_count;
+  return $self->syform->fields_object_class->new($self->as_hashref);
 }
 
 1;
@@ -26,7 +26,7 @@ __END__
 
 =head1 NAME
 
-SyForm::View::Verify - Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
+SyForm::Values::Object - Functionality for SyForm::Values to deliver a Moose object
 
 =head1 VERSION
 
