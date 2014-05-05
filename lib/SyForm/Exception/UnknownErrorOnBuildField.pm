@@ -2,7 +2,8 @@ package SyForm::Exception::UnknownErrorOnBuildField;
 BEGIN {
   $SyForm::Exception::UnknownErrorOnBuildField::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::UnknownErrorOnBuildField::VERSION = '0.007';
+# ABSTRACT: Exception at the building of one specific field on a SyForm
+$SyForm::Exception::UnknownErrorOnBuildField::VERSION = '0.008';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -43,11 +44,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Exception::UnknownErrorOnBuildField
+SyForm::Exception::UnknownErrorOnBuildField - Exception at the building of one specific field on a SyForm
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

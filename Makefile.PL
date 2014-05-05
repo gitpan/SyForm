@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "SyForm - a role driven form management",
+  "ABSTRACT" => "A role driven, readonly attributes, form management",
   "AUTHOR" => "Torsten Raudssus <torsten\@raudss.us>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
@@ -21,19 +21,19 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "SyForm",
   "PREREQ_PM" => {
-    "Data::Verifier" => 0,
     "List::MoreUtils" => 0,
     "Moose" => "2.1204",
     "MooseX::Traits" => "0.12",
     "Throwable" => 0,
     "Tie::IxHash" => 0,
-    "namespace::autoclean" => 0
+    "Validation::Class" => 0,
+    "namespace::clean" => 0
   },
   "TEST_REQUIRES" => {
     "Test::LoadAllModules" => "0.021",
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.007",
+  "VERSION" => "0.008",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -41,7 +41,6 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Data::Verifier" => 0,
   "List::MoreUtils" => 0,
   "Moose" => "2.1204",
   "MooseX::Traits" => "0.12",
@@ -49,7 +48,8 @@ my %FallbackPrereqs = (
   "Test::More" => "0.96",
   "Throwable" => 0,
   "Tie::IxHash" => 0,
-  "namespace::autoclean" => 0
+  "Validation::Class" => 0,
+  "namespace::clean" => 0
 );
 
 

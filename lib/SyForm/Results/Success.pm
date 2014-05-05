@@ -2,13 +2,11 @@ package SyForm::Results::Success;
 BEGIN {
   $SyForm::Results::Success::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT:
-$SyForm::Results::Success::VERSION = '0.007';
+# ABSTRACT: A bool for holding the success of the form process
+$SyForm::Results::Success::VERSION = '0.008';
 use Moose::Role;
-use namespace::autoclean;
-
-# use MooseX::Role::WithOverloading;
-# use overload q{bool} => sub { $_[0]->success };
+#use overload q{bool} => sub { $_[0]->success ? 1 : 0 }, fallback => 1;
+use namespace::clean -except => 'meta';
 
 has success => (
   is => 'ro',
@@ -24,11 +22,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Results::Success - $SyForm::Results::Success::VERSION = '0.007';
+SyForm::Results::Success - A bool for holding the success of the form process
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

@@ -2,14 +2,11 @@ package SyForm::View::Success;
 BEGIN {
   $SyForm::View::Success::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT:
-$SyForm::View::Success::VERSION = '0.007';
+# ABSTRACT: Fetching success value from SyForn::Results of give back true
+$SyForm::View::Success::VERSION = '0.008';
 use Moose::Role;
-use namespace::autoclean;
-
-# TODO
-# use MooseX::Role::WithOverloading;
-# use overload q{bool} => 'success';
+#use overload q{bool} => sub { $_[0]->success ? 1 : 0 }, fallback => 1;
+use namespace::clean -except => 'meta';
 
 has success => (
   is => 'ro',
@@ -20,8 +17,7 @@ has success => (
 sub _build_success {
   my ( $self ) = @_;
   return $self->results->does('SyForm::Results::Success')
-    ? $self->results->success
-    : 1;
+    ? $self->results->success : 1;
 }
 
 1;
@@ -32,11 +28,11 @@ __END__
 
 =head1 NAME
 
-SyForm::View::Success - $SyForm::View::Success::VERSION = '0.007';
+SyForm::View::Success - Fetching success value from SyForn::Results of give back true
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

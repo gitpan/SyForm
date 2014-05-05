@@ -2,10 +2,11 @@ package SyForm::Results;
 BEGIN {
   $SyForm::Results::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Results::VERSION = '0.007';
+# ABSTRACT: Results of the processing of SyForm::Values
+$SyForm::Results::VERSION = '0.008';
 use Moose::Role;
 use List::MoreUtils qw( uniq );
-use namespace::autoclean;
+use namespace::clean -except => 'meta';
 
 with qw(
   MooseX::Traits
@@ -145,11 +146,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Results
+SyForm::Results - Results of the processing of SyForm::Values
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

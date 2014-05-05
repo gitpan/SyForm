@@ -2,8 +2,9 @@ package SyForm;
 BEGIN {
   $SyForm::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: SyForm - a role driven form management
-$SyForm::VERSION = '0.007';
+# ABSTRACT: A role driven, readonly attributes, form management
+$SyForm::VERSION = '0.008';
+
 use Moose::Role;
 use Tie::IxHash;
 use Carp qw( croak );
@@ -12,13 +13,16 @@ use Moose::Util::TypeConstraints;
 use Module::Runtime qw( use_module );
 
 role_type 'SyForm::Field';
+role_type 'SyForm::Field::Verify';
 role_type 'SyForm::Values';
 role_type 'SyForm::Results';
 role_type 'SyForm::View';
 role_type 'SyForm::ViewField';
 
 use SyForm::Exception;
-use namespace::autoclean;
+use namespace::clean -except => 'meta';
+
+require SyForm::Field::Verify;
 
 with qw(
   MooseX::Traits
@@ -41,9 +45,7 @@ our %default_field_roles_by_arg = (
   label => 'SyForm::Field::Label',
   html => 'SyForm::Field::HTML',
   readonly => 'SyForm::Field::Readonly',
-  (map { $_ => 'SyForm::Field::Verify' } qw(
-    required type filters
-  )),
+  (map { $_ => 'SyForm::Field::Verify' } @SyForm::Field::Verify::validation_class_directives),
 );
 
 our %default_form_roles_by_field_arg = (
@@ -282,11 +284,11 @@ __END__
 
 =head1 NAME
 
-SyForm - SyForm - a role driven form management
+SyForm - A role driven, readonly attributes, form management
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 
@@ -294,12 +296,11 @@ version 0.007
 
   my $form = SyForm->create([
     'username' => {
-      isa => 'Str',
       required => 1,
       label => 'Your name',
     },
     'age' => {
-      isa => 'Int',
+      decimal => 1,
       label => 'Your age',
     },
     'unchecked' => {
@@ -358,6 +359,10 @@ every L<SyForm::Field> that is used in the process flow. The view field allows
 easy access to the L<SyForm::Values> values, the L<SyForm::Results> results
 and the actually L<SyForm::Field> definition, to get a complete access of
 all variables in the rendering.
+
+For validation L<SyForm> implements L<Validation::Class> and so
+most of the directives available there are available in L<SyForm>.
+A complete list can be found at L<SyForm::Field::Verify>.
 
 =encoding utf8
 

@@ -2,10 +2,10 @@ package SyForm::Meta::Attribute::Field;
 BEGIN {
   $SyForm::Meta::Attribute::Field::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: Role for SyForm fields of SyForm::Results and SyForm::Values meta attributes
-$SyForm::Meta::Attribute::Field::VERSION = '0.007';
+# ABSTRACT: Role for SyForm fields meta attributes
+$SyForm::Meta::Attribute::Field::VERSION = '0.008';
 use Moose::Role;
-use namespace::autoclean;
+use namespace::clean -except => 'meta';
 
 has field => (
   is => 'ro',
@@ -24,11 +24,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Meta::Attribute::Field - Role for SyForm fields of SyForm::Results and SyForm::Values meta attributes
+SyForm::Meta::Attribute::Field - Role for SyForm fields meta attributes
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

@@ -2,10 +2,10 @@ package SyForm::Field::HTML;
 BEGIN {
   $SyForm::Field::HTML::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: HTML attributes for a field
-$SyForm::Field::HTML::VERSION = '0.007';
+# ABSTRACT: HTML attributes for the field
+$SyForm::Field::HTML::VERSION = '0.008';
 use Moose::Role;
-use namespace::autoclean;
+use namespace::clean -except => 'meta';
 
 has html => (
   is => 'rw',
@@ -32,11 +32,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Field::HTML - HTML attributes for a field
+SyForm::Field::HTML - HTML attributes for the field
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

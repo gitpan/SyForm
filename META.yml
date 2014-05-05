@@ -1,5 +1,5 @@
 ---
-abstract: 'SyForm - a role driven form management'
+abstract: 'A role driven, readonly attributes, form management'
 author:
   - 'Torsten Raudssus <torsten@raudss.us>'
 build_requires:
@@ -15,17 +15,17 @@ meta-spec:
   version: '1.4'
 name: SyForm
 requires:
-  Data::Verifier: '0'
   List::MoreUtils: '0'
   Moose: '2.1204'
   MooseX::Traits: '0.12'
   Throwable: '0'
   Tie::IxHash: '0'
-  namespace::autoclean: '0'
+  Validation::Class: '0'
+  namespace::clean: '0'
 resources:
   homepage: https://github.com/SyContent/SyForm
   repository: https://github.com/SyContent/SyForm.git
-version: '0.007'
+version: '0.008'
 x_Dist_Zilla:
   perl:
     version: '5.018001'

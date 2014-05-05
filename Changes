@@ -1,10 +1,24 @@
 ==================================================
-Changes from 1740-07-20 00:00:00 +0000 to present.
+Changes from 1740-07-21 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.007 at 2014-05-04 09:33:20 +0000
+version 0.008 at 2014-05-05 01:50:33 +0000
 ------------------------------------------
+
+  Change: 651daaaa7a6cba40a2035d3c55db63f3c8c58591
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-05 03:50:12 +0000
+
+    More fixes, deactivating overloading again, more abstracts 
+
+  Change: a682b0c1607d6bd487a1f2ee8b5bc5d716dbb0d3
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-05-05 03:32:58 +0000
+
+    Switched to Validation::Class, added overloading for bool at least
+    (hashref and array still are making problems), switched to
+    namespace::clean 
 
   Change: 706b3db29b622a7801a3b8b8705d6492d1797ef7
   Author: Torsten Raudssus <torsten@raudss.us>

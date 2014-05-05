@@ -2,9 +2,10 @@ package SyForm::View;
 BEGIN {
   $SyForm::View::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::View::VERSION = '0.007';
+# ABSTRACT: Container for SyForm::Results and SyForm::ViewField
+$SyForm::View::VERSION = '0.008';
 use Moose::Role;
-use namespace::autoclean;
+use namespace::clean -except => 'meta';
 
 with qw(
   MooseX::Traits
@@ -136,11 +137,11 @@ __END__
 
 =head1 NAME
 
-SyForm::View
+SyForm::View - Container for SyForm::Results and SyForm::ViewField
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

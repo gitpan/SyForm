@@ -2,9 +2,10 @@ package SyForm::Class;
 BEGIN {
   $SyForm::Class::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: Make a SyForm class with fields
-$SyForm::Class::VERSION = '0.007';
+# ABSTRACT: TODO
+$SyForm::Class::VERSION = '0.008';
 use Moose;
+use namespace::clean -except => 'meta';
 
 # TODO
 
@@ -16,11 +17,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Class - Make a SyForm class with fields
+SyForm::Class - TODO
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

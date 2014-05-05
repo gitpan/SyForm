@@ -2,10 +2,10 @@ package SyForm::Label;
 BEGIN {
   $SyForm::Label::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: A label for a form
-$SyForm::Label::VERSION = '0.007';
+# ABSTRACT: A label for the form
+$SyForm::Label::VERSION = '0.008';
 use Moose::Role;
-use namespace::autoclean;
+use namespace::clean -except => 'meta';
 
 has label => (
   is => 'ro',
@@ -21,11 +21,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Label - A label for a form
+SyForm::Label - A label for the form
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

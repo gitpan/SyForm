@@ -2,7 +2,7 @@ package SyForm::Exception::UnknownErrorOnValuesBuildResults;
 BEGIN {
   $SyForm::Exception::UnknownErrorOnValuesBuildResults::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::UnknownErrorOnValuesBuildResults::VERSION = '0.007';
+$SyForm::Exception::UnknownErrorOnValuesBuildResults::VERSION = '0.008';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -32,7 +32,7 @@ SyForm::Exception::UnknownErrorOnValuesBuildResults
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

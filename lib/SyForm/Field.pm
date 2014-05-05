@@ -3,8 +3,9 @@ BEGIN {
   $SyForm::Field::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for fields in SyForm
-$SyForm::Field::VERSION = '0.007';
+$SyForm::Field::VERSION = '0.008';
 use Moose::Role;
+use namespace::clean;
 
 with qw(
   MooseX::Traits
@@ -42,7 +43,7 @@ SyForm::Field - Role for fields in SyForm
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

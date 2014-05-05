@@ -2,7 +2,8 @@ package SyForm::Exception::Role::WithOriginalError;
 BEGIN {
   $SyForm::Exception::Role::WithOriginalError::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::Role::WithOriginalError::VERSION = '0.007';
+# ABSTRACT: Role for exceptions with a non SyForm error
+$SyForm::Exception::Role::WithOriginalError::VERSION = '0.008';
 use Moose::Role;
 
 has original_error => (
@@ -35,11 +36,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Exception::Role::WithOriginalError
+SyForm::Exception::Role::WithOriginalError - Role for exceptions with a non SyForm error
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

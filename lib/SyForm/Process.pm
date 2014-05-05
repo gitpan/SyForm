@@ -3,12 +3,12 @@ BEGIN {
   $SyForm::Process::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for processed fields
-$SyForm::Process::VERSION = '0.007';
+$SyForm::Process::VERSION = '0.008';
 use Moose::Role;
 use Moose::Meta::Class;
 use Moose::Meta::Attribute;
 use List::MoreUtils qw( uniq );
-use namespace::autoclean;
+use namespace::clean;
 
 #########
 #
@@ -167,7 +167,7 @@ SyForm::Process - Role for processed fields
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

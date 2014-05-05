@@ -2,10 +2,10 @@ package SyForm::Field::Default;
 BEGIN {
   $SyForm::Field::Default::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: A default for a field
-$SyForm::Field::Default::VERSION = '0.007';
+# ABSTRACT: A default for the field
+$SyForm::Field::Default::VERSION = '0.008';
 use Moose::Role;
-use namespace::autoclean;
+use namespace::clean -except => 'meta';
 
 has default => (
   is => 'ro',
@@ -33,11 +33,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Field::Default - A default for a field
+SyForm::Field::Default - A default for the field
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

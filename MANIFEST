@@ -32,7 +32,6 @@ lib/SyForm/Field/Default.pm
 lib/SyForm/Field/HTML.pm
 lib/SyForm/Field/Label.pm
 lib/SyForm/Field/Process.pm
-lib/SyForm/Field/Readonly.pm
 lib/SyForm/Field/Verify.pm
 lib/SyForm/Fields.pm
 lib/SyForm/Label.pm
@@ -45,11 +44,9 @@ lib/SyForm/Values.pm
 lib/SyForm/Values/Verify.pm
 lib/SyForm/Verify.pm
 lib/SyForm/View.pm
-lib/SyForm/View/Errors.pm
 lib/SyForm/View/Success.pm
 lib/SyForm/View/Verify.pm
 lib/SyForm/ViewField.pm
-lib/SyForm/ViewField/Errors.pm
 lib/SyForm/ViewField/Verify.pm
 t/default.t
 t/exceptions.t

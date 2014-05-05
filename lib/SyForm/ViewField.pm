@@ -2,9 +2,10 @@ package SyForm::ViewField;
 BEGIN {
   $SyForm::ViewField::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: Role for fields inside a View
-$SyForm::ViewField::VERSION = '0.007';
+# ABSTRACT: Role for fields inside a SyForm::View
+$SyForm::ViewField::VERSION = '0.008';
 use Moose::Role;
+use namespace::clean -except => 'meta';
 
 with qw(
   MooseX::Traits
@@ -67,11 +68,11 @@ __END__
 
 =head1 NAME
 
-SyForm::ViewField - Role for fields inside a View
+SyForm::ViewField - Role for fields inside a SyForm::View
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

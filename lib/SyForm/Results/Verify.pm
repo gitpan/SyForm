@@ -3,15 +3,26 @@ BEGIN {
   $SyForm::Results::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
-$SyForm::Results::Verify::VERSION = '0.007';
+$SyForm::Results::Verify::VERSION = '0.008';
 use Moose::Role;
-use namespace::autoclean;
+use namespace::clean;
 
-has verify_results => (
+has validation_class => (
   is => 'ro',
-  isa => 'Data::Verifier::Results',
+  isa => 'Validation::Class::Simple',
   required => 1,
 );
+
+has error_count => (
+  is => 'ro',
+  isa => 'Int',
+  lazy_build => 1,
+);
+
+sub _build_error_count {
+  my ( $self ) = @_;
+  $self->validation_class->error_count;
+}
 
 1;
 
@@ -25,7 +36,7 @@ SyForm::Results::Verify - Trait for SyForm fields of SyForm::Results and SyForm:
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

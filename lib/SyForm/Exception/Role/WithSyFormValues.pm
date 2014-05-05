@@ -2,7 +2,8 @@ package SyForm::Exception::Role::WithSyFormValues;
 BEGIN {
   $SyForm::Exception::Role::WithSyFormValues::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::Role::WithSyFormValues::VERSION = '0.007';
+# ABSTRACT: Role for exceptions with a SyForm::Values
+$SyForm::Exception::Role::WithSyFormValues::VERSION = '0.008';
 use Moose::Role;
 
 has values => (
@@ -22,11 +23,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Exception::Role::WithSyFormValues
+SyForm::Exception::Role::WithSyFormValues - Role for exceptions with a SyForm::Values
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 

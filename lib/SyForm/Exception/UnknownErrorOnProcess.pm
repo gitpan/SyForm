@@ -2,7 +2,8 @@ package SyForm::Exception::UnknownErrorOnProcess;
 BEGIN {
   $SyForm::Exception::UnknownErrorOnProcess::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Exception::UnknownErrorOnProcess::VERSION = '0.007';
+# ABSTRACT: Exception on SyForm::Process->process
+$SyForm::Exception::UnknownErrorOnProcess::VERSION = '0.008';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -35,11 +36,11 @@ __END__
 
 =head1 NAME
 
-SyForm::Exception::UnknownErrorOnProcess
+SyForm::Exception::UnknownErrorOnProcess - Exception on SyForm::Process->process
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 AUTHOR
 
