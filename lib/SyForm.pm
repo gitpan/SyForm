@@ -2,8 +2,8 @@ package SyForm;
 BEGIN {
   $SyForm::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: A role driven, readonly attributes, form management
-$SyForm::VERSION = '0.009';
+# ABSTRACT: Easy role driven form management
+$SyForm::VERSION = '0.010';
 
 use Moose::Role;
 use Tie::IxHash;
@@ -43,17 +43,18 @@ our %default_form_roles_by_arg = (
 
 our %default_field_roles_by_arg = (
   default => 'SyForm::Field::Default',
-  label => 'SyForm::Field::Label',
-  html => 'SyForm::Field::HTML',
   readonly => 'SyForm::Field::Readonly',
   (map { $_ => 'SyForm::Field::Verify' } @SyForm::Field::Verify::validation_class_directives),
+  html => 'SyForm::Field::HTML',
+  label => 'SyForm::Field::Label',
 );
 
 our %default_form_roles_by_field_arg = (
-  label => 'SyForm::Label',
   (map { $_ => 'SyForm::Verify' } grep {
     $default_field_roles_by_arg{$_} eq 'SyForm::Field::Verify'
-  } keys %default_field_roles_by_arg)
+  } keys %default_field_roles_by_arg),
+  html => 'SyForm::HTML',
+  label => 'SyForm::Label',
 );
 
 #######################
@@ -287,11 +288,11 @@ __END__
 
 =head1 NAME
 
-SyForm - A role driven, readonly attributes, form management
+SyForm - Easy role driven form management
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
@@ -301,13 +302,16 @@ version 0.009
     'username' => {
       required => 1,
       label => 'Your name',
+      html => 'text',
     },
     'age' => {
       decimal => 1,
       label => 'Your age',
+      html => 'text',
     },
     'unchecked' => {
       label => 'Unchecked',
+      html => 'textarea',
     },
   ]);
 
@@ -341,6 +345,8 @@ version 0.009
     # for access to the main SyForm::Field of the view field
     my $syform_field = $view->field($field_name)->field;
   }
+
+  $view->render; # get HTML
 
 =head1 DESCRIPTION
 

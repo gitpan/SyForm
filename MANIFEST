@@ -9,6 +9,7 @@ README
 cpanfile
 dist.ini
 lib/SyForm.pm
+lib/SyForm/Bootstrap.pm
 lib/SyForm/Class.pm
 lib/SyForm/Exception.pm
 lib/SyForm/Exception/Role/WithCreateArgs.pm
@@ -34,6 +35,7 @@ lib/SyForm/Field/Label.pm
 lib/SyForm/Field/Process.pm
 lib/SyForm/Field/Verify.pm
 lib/SyForm/Fields.pm
+lib/SyForm/HTML.pm
 lib/SyForm/Label.pm
 lib/SyForm/Meta/Attribute/Field.pm
 lib/SyForm/Object.pm
@@ -47,10 +49,15 @@ lib/SyForm/Values/Object.pm
 lib/SyForm/Values/Verify.pm
 lib/SyForm/Verify.pm
 lib/SyForm/View.pm
+lib/SyForm/View/Bootstrap.pm
+lib/SyForm/View/HTML.pm
 lib/SyForm/View/Object.pm
 lib/SyForm/View/Success.pm
 lib/SyForm/View/Verify.pm
 lib/SyForm/ViewField.pm
+lib/SyForm/ViewField/Bootstrap.pm
+lib/SyForm/ViewField/HTML.pm
+lib/SyForm/ViewField/Label.pm
 lib/SyForm/ViewField/Verify.pm
 t/default.t
 t/exceptions.t

@@ -1,22 +1,22 @@
-package SyForm::Field::Label;
+package SyForm::ViewField::Label;
 BEGIN {
-  $SyForm::Field::Label::AUTHORITY = 'cpan:GETTY';
+  $SyForm::ViewField::Label::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: A label for the field
-$SyForm::Field::Label::VERSION = '0.010';
+# ABSTRACT: Label ViewField for a Label Field
+$SyForm::ViewField::Label::VERSION = '0.010';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
 has label => (
   is => 'ro',
   isa => 'Str',
-  predicate => 'has_label',
+  lazy_build => 1,
 );
 
-around viewfield_roles_by_results => sub {
-  my ( $orig, $self, $results ) = @_;
-  return $self->$orig($results), qw( SyForm::ViewField::Label );
-};
+sub _build_label {
+  my ( $self ) = @_;
+  return $self->field->label;
+}
 
 1;
 
@@ -26,7 +26,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Field::Label - A label for the field
+SyForm::ViewField::Label - Label ViewField for a Label Field
 
 =head1 VERSION
 

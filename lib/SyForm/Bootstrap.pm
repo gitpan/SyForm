@@ -1,20 +1,16 @@
-package SyForm::Meta::Attribute::Field;
+package SyForm::Bootstrap;
 BEGIN {
-  $SyForm::Meta::Attribute::Field::AUTHORITY = 'cpan:GETTY';
+  $SyForm::Bootstrap::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: Role for SyForm fields meta attributes
-$SyForm::Meta::Attribute::Field::VERSION = '0.010';
+# ABSTRACT: Bootstrap support for your SyForm::View
+$SyForm::Bootstrap::VERSION = '0.010';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
-has field => (
-  is => 'ro',
-  does => 'SyForm::Field',
-  required => 1,
-  handles => [qw(
-    syform
-  )],
-);
+around _build_view_roles => sub {
+  my ( $orig, $self ) = @_;
+  return [ @{$self->$orig}, 'SyForm::View::Bootstrap' ];
+};
 
 1;
 
@@ -24,7 +20,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Meta::Attribute::Field - Role for SyForm fields meta attributes
+SyForm::Bootstrap - Bootstrap support for your SyForm::View
 
 =head1 VERSION
 

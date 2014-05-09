@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Values::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Values given of the fields through the process args
-$SyForm::Values::VERSION = '0.009';
+$SyForm::Values::VERSION = '0.010';
 use Moose::Role;
 use List::MoreUtils qw( uniq );
 use namespace::clean -except => 'meta';
@@ -160,7 +160,7 @@ SyForm::Values - Values given of the fields through the process args
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 AUTHOR
 

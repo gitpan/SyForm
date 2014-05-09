@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Process::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for processed fields
-$SyForm::Process::VERSION = '0.009';
+$SyForm::Process::VERSION = '0.010';
 use Moose::Role;
 use Moose::Meta::Class;
 use Moose::Meta::Attribute;
@@ -145,8 +145,6 @@ sub _build_results_roles {[]}
 
 sub process_results {
   my ( $self, %args ) = @_;
-  my $results;
-  my $results_as_hashref = delete $args{results_as_hashref};
   my $values = $self->process_values(%args);
   return $values->results;
 }
@@ -167,7 +165,6 @@ sub _build_view_roles {[]}
 
 sub process_view {
   my ( $self, %args ) = @_;
-  my $view;
   my $results = $self->process_results(%args);
   return $results->view;
 }
@@ -184,7 +181,7 @@ SyForm::Process - Role for processed fields
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 AUTHOR
 

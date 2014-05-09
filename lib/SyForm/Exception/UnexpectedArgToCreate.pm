@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Exception::UnexpectedArgToCreate::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Arguments given to SyForm->create are invalid
-$SyForm::Exception::UnexpectedArgToCreate::VERSION = '0.009';
+$SyForm::Exception::UnexpectedArgToCreate::VERSION = '0.010';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -38,7 +38,7 @@ SyForm::Exception::UnexpectedArgToCreate - Arguments given to SyForm->create are
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 AUTHOR
 

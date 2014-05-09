@@ -1,20 +1,16 @@
-package SyForm::Meta::Attribute::Field;
+package SyForm::HTML;
 BEGIN {
-  $SyForm::Meta::Attribute::Field::AUTHORITY = 'cpan:GETTY';
+  $SyForm::HTML::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: Role for SyForm fields meta attributes
-$SyForm::Meta::Attribute::Field::VERSION = '0.010';
+# ABSTRACT:
+$SyForm::HTML::VERSION = '0.010';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
-has field => (
-  is => 'ro',
-  does => 'SyForm::Field',
-  required => 1,
-  handles => [qw(
-    syform
-  )],
-);
+around view_roles => sub {
+  my ( $orig, $self ) = @_;
+  return [ @{$self->$orig}, 'SyForm::View::HTML' ];
+};
 
 1;
 
@@ -24,7 +20,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Meta::Attribute::Field - Role for SyForm fields meta attributes
+SyForm::HTML - $SyForm::HTML::VERSION = '0.010';
 
 =head1 VERSION
 

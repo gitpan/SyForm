@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Results::Object::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Functionality for SyForm::Results to deliver a Moose object
-$SyForm::Results::Object::VERSION = '0.009';
+$SyForm::Results::Object::VERSION = '0.010';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
@@ -30,7 +30,7 @@ SyForm::Results::Object - Functionality for SyForm::Results to deliver a Moose o
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 AUTHOR
 

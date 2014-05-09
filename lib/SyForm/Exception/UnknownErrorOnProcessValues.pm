@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Exception::UnknownErrorOnProcessValues::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Exception on SyForm::Process->process_values
-$SyForm::Exception::UnknownErrorOnProcessValues::VERSION = '0.009';
+$SyForm::Exception::UnknownErrorOnProcessValues::VERSION = '0.010';
 use Moose;
 extends 'SyForm::Exception';
 
@@ -40,7 +40,7 @@ SyForm::Exception::UnknownErrorOnProcessValues - Exception on SyForm::Process->p
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 AUTHOR
 

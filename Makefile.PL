@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "A role driven, readonly attributes, form management",
+  "ABSTRACT" => "Easy role driven form management",
   "AUTHOR" => "Torsten Raudssus <torsten\@raudss.us>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
@@ -23,6 +23,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "List::MoreUtils" => 0,
     "Moose" => "2.1204",
+    "MooseX::Role::WithOverloading" => "0.13",
     "MooseX::Traits" => "0.12",
     "Throwable" => 0,
     "Tie::IxHash" => 0,
@@ -33,7 +34,7 @@ my %WriteMakefileArgs = (
     "Test::LoadAllModules" => "0.021",
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.009",
+  "VERSION" => "0.010",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -43,6 +44,7 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "List::MoreUtils" => 0,
   "Moose" => "2.1204",
+  "MooseX::Role::WithOverloading" => "0.13",
   "MooseX::Traits" => "0.12",
   "Test::LoadAllModules" => "0.021",
   "Test::More" => "0.96",

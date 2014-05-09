@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Field::HTML::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: HTML attributes for the field
-$SyForm::Field::HTML::VERSION = '0.009';
+$SyForm::Field::HTML::VERSION = '0.010';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
@@ -13,15 +13,26 @@ has html => (
   required => 1,
 );
 
-has input_attrs => (
+has custom_input_attrs => (
   is => 'rw',
-  isa => 'HashRef[Str|ArrayRef[Str]]',
+  isa => 'HashRef[Str]',
+  default => sub {{}},
+);
+
+around viewfield_roles_by_results => sub {
+  my ( $orig, $self, $results ) = @_;
+  return $self->$orig($results), qw( SyForm::ViewField::HTML );
+};
+
+has html_name => (
+  is => 'rw',
+  isa => 'Str',
   lazy_build => 1,
 );
 
-sub _build_input_attrs {
-  my ( $self ) = @_; 
-  return {};
+sub _build_html_name {
+  my ( $self ) = @_;
+  return $self->name;
 }
 
 1;
@@ -36,7 +47,7 @@ SyForm::Field::HTML - HTML attributes for the field
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 AUTHOR
 

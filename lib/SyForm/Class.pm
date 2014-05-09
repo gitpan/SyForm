@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Class::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: TODO
-$SyForm::Class::VERSION = '0.009';
+$SyForm::Class::VERSION = '0.010';
 use Moose;
 use namespace::clean -except => 'meta';
 
@@ -20,7 +20,7 @@ SyForm::Class - TODO
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
@@ -41,6 +41,20 @@ version 0.009
     MyApp::SyForm::ValuesRole
   );
 
+  results_roles qw(
+    MyApp::SyForm::ResultsRole
+  );
+
+  view_roles qw(
+    MyApp::SyForm::ViewRole
+  );
+
+  viewfield_roles 
+    username => [qw( MyApp::SyForm::ViewFieldRoleForUsername )],
+    age => [qw( MyApp::SyForm::ViewFieldRoleForAge )];
+
+  viewfield_roles_for_all qw( MyApp::SyForm::ViewFieldRole );
+
   # Results roles are given via Values role
   # and View roles are given via Results role
   # ViewField roles are given via Field role
@@ -49,6 +63,9 @@ version 0.009
   # use roles for this, please.
   # values_class qw( MyApp::SyForm::Values );
   # field_class qw( MyApp::SyForm::Field );
+
+  # If you dont want Moose::Object as base for all of that
+  object_class 'MyApp::Object';
 
   field username => (
     required => 1,

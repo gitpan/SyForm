@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::ViewField::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for fields inside a SyForm::View
-$SyForm::ViewField::VERSION = '0.009';
+$SyForm::ViewField::VERSION = '0.010';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
@@ -72,7 +72,7 @@ SyForm::ViewField - Role for fields inside a SyForm::View
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 AUTHOR
 

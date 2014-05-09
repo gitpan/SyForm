@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::View::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Container for SyForm::Results and SyForm::ViewField
-$SyForm::View::VERSION = '0.009';
+$SyForm::View::VERSION = '0.010';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
@@ -26,12 +26,21 @@ has results => (
 #
 #############
 
+has viewfield_roles_for_all => (
+  isa => 'ArrayRef[Str]',
+  is => 'ro',
+  lazy_build => 1,
+);
+
+sub _build_viewfield_roles_for_all {[]}
+
 has viewfield_roles => (
   isa => 'HashRef[Str|ArrayRef[Str]]',
   is => 'ro',
-  lazy => 1,
-  default => sub {{}},
+  lazy_build => 1,
 );
+
+sub _build_viewfield_roles {{}}
 
 has viewfield_role => (
   isa => 'Str',
@@ -100,8 +109,9 @@ sub _build_fields {
   my %fields;
   for my $field ($self->syform->fields->Values) {
     my %viewfield_args = $field->viewfield_args_by_results($self->results);
-    my @traits = defined $viewfield_roles{$field->name}
-      ? (@{$viewfield_roles{$field->name}}) : ();
+    my @traits = @{$self->viewfield_roles_for_all};
+    push @traits, @{$viewfield_roles{$field->name}}
+      if defined $viewfield_roles{$field->name};
     push @traits, @{delete $viewfield_args{roles}}
         if defined $viewfield_args{roles};
     $fields{$field->name} = $self->create_viewfield($field,
@@ -123,12 +133,6 @@ sub create_viewfield {
   });
 }
 
-############
-#
-# ViewField
-#
-############
-
 1;
 
 __END__
@@ -141,7 +145,7 @@ SyForm::View - Container for SyForm::Results and SyForm::ViewField
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 AUTHOR
 

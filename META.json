@@ -1,5 +1,5 @@
 {
-   "abstract" : "A role driven, readonly attributes, form management",
+   "abstract" : "Easy role driven form management",
    "author" : [
       "Torsten Raudssus <torsten@raudss.us>"
    ],
@@ -28,6 +28,7 @@
          "requires" : {
             "List::MoreUtils" : "0",
             "Moose" : "2.1204",
+            "MooseX::Role::WithOverloading" : "0.13",
             "MooseX::Traits" : "0.12",
             "Throwable" : "0",
             "Tie::IxHash" : "0",
@@ -51,7 +52,7 @@
          "web" : "https://github.com/SyContent/SyForm"
       }
    },
-   "version" : "0.009",
+   "version" : "0.010",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.018001"

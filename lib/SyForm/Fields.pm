@@ -3,15 +3,8 @@ BEGIN {
   $SyForm::Fields::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for SyForm::Values and SyForm::Results holding the fields
-$SyForm::Fields::VERSION = '0.009';
+$SyForm::Fields::VERSION = '0.010';
 use Moose::Role;
-################ TODO
-# use overload
-#   q{%{}} => sub { use DDP; p($_[0]); 
-#     $_[0]->as_hashref },
-#   q{@{}} => sub {[ map {
-#     $_[0]->as_hashref->{$_}
-#   } keys %{$_[0]->as_hashref} ]};
 use namespace::clean -except => 'meta';
 
 requires 'as_hashref';
@@ -34,7 +27,7 @@ SyForm::Fields - Role for SyForm::Values and SyForm::Results holding the fields
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 AUTHOR
 

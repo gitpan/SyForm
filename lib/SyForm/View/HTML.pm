@@ -1,21 +1,28 @@
-package SyForm::Values::Object;
+package SyForm::View::HTML;
 BEGIN {
-  $SyForm::Values::Object::AUTHORITY = 'cpan:GETTY';
+  $SyForm::View::HTML::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: Functionality for SyForm::Values to deliver a Moose object
-$SyForm::Values::Object::VERSION = '0.010';
+# ABSTRACT:
+$SyForm::View::HTML::VERSION = '0.010';
 use Moose::Role;
 use namespace::clean -except => 'meta';
 
-has object => (
+has render => (
   is => 'ro',
-  isa => 'Moose::Object',
+  isa => 'Str',
   lazy_build => 1,
 );
 
-sub _build_object {
+sub _build_render {
   my ( $self ) = @_;
-  return $self->syform->fields_object_class->new($self->as_hashref);
+  my $html = '<form>'."\n";
+  for my $key ($self->syform->fields->Keys) {
+    if (defined $self->fields->{$key}) {
+      $html .= $self->fields->{$key}->render;
+    }
+  }
+  $html .= '</form>';
+  return $html;
 }
 
 1;
@@ -26,7 +33,7 @@ __END__
 
 =head1 NAME
 
-SyForm::Values::Object - Functionality for SyForm::Values to deliver a Moose object
+SyForm::View::HTML - $SyForm::View::HTML::VERSION = '0.010';
 
 =head1 VERSION
 
