@@ -3,14 +3,14 @@ BEGIN {
   $SyForm::Exception::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: SyForm base exception class
-$SyForm::Exception::VERSION = '0.010';
-use Moose;
+$SyForm::Exception::VERSION = '0.100';
+use Moo;
 extends 'Throwable::Error';
 
 around throw => sub {
   my ( $orig, $class, $message, %args ) = @_;
   $class->$orig({
-    message => '[SyForm Exception] '.$message, %args
+    message => "\n".'[SyForm Exception] '.$message, %args
   });
 };
 
@@ -31,7 +31,7 @@ SyForm::Exception - SyForm base exception class
 
 =head1 VERSION
 
-version 0.010
+version 0.100
 
 =head1 AUTHOR
 

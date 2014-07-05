@@ -3,33 +3,40 @@ BEGIN {
   $SyForm::Field::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for fields in SyForm
-$SyForm::Field::VERSION = '0.010';
-use Moose::Role;
-use namespace::clean -except => 'meta';
+$SyForm::Field::VERSION = '0.100';
+use Moo;
 
 with qw(
-  MooseX::Traits
+  MooX::Traits
+  SyForm::FieldRole::Process
 );
 
 has syform => (
   is => 'ro',
-  isa => 'SyForm',
   weak_ref => 1,
   required => 1,
 );
 
 has name => (
   is => 'ro',
-  isa => 'Str',
   required => 1,
 );
 
 has has_name => (
-  is => 'ro',
-  isa => 'Str',
-  lazy_build => 1,
+  is => 'lazy',
 );
-sub _build_has_name { 'has_'.($_[0]->name) }
+sub _build_has_name { return 'has_'.($_[0]->name) }
+
+has label => (
+  is => 'lazy',
+);
+
+sub _build_label {
+  my ( $self ) = @_;
+  my $name = $self->name;
+  $name =~ s/_/ /g;
+  return join(' ', map { ucfirst($_) } split(/\s+/,$name) );
+}
 
 1;
 
@@ -43,7 +50,7 @@ SyForm::Field - Role for fields in SyForm
 
 =head1 VERSION
 
-version 0.010
+version 0.100
 
 =head1 AUTHOR
 

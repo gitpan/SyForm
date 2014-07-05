@@ -3,12 +3,11 @@ BEGIN {
   $SyForm::Exception::Role::WithSyFormResults::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for exceptions with a SyForm::Results
-$SyForm::Exception::Role::WithSyFormResults::VERSION = '0.010';
-use Moose::Role;
+$SyForm::Exception::Role::WithSyFormResults::VERSION = '0.100';
+use Moo::Role;
 
 has results => (
   is => 'ro',
-  does => 'SyForm::Results',
   required => 1,
   handles => [qw(
     syform
@@ -27,7 +26,7 @@ SyForm::Exception::Role::WithSyFormResults - Role for exceptions with a SyForm::
 
 =head1 VERSION
 
-version 0.010
+version 0.100
 
 =head1 AUTHOR
 

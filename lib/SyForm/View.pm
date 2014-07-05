@@ -3,134 +3,54 @@ BEGIN {
   $SyForm::View::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Container for SyForm::Results and SyForm::ViewField
-$SyForm::View::VERSION = '0.010';
-use Moose::Role;
-use namespace::clean -except => 'meta';
+$SyForm::View::VERSION = '0.100';
+use Moo;
+use Tie::IxHash;
+use Module::Runtime qw( use_module );
 
 with qw(
-  MooseX::Traits
+  MooX::Traits
+  SyForm::ViewRole::Success
+  SyForm::ViewRole::Verify
+  SyForm::ViewRole::HTML
+  SyForm::ViewRole::Bootstrap
 );
 
 has results => (
   is => 'ro',
-  does => 'SyForm::Results',
   required => 1,
   handles => [qw(
     syform
+    values
   )],
 );
-
-#############
-#
-# View Field
-#
-#############
-
-has viewfield_roles_for_all => (
-  isa => 'ArrayRef[Str]',
-  is => 'ro',
-  lazy_build => 1,
-);
-
-sub _build_viewfield_roles_for_all {[]}
-
-has viewfield_roles => (
-  isa => 'HashRef[Str|ArrayRef[Str]]',
-  is => 'ro',
-  lazy_build => 1,
-);
-
-sub _build_viewfield_roles {{}}
-
-has viewfield_role => (
-  isa => 'Str',
-  is => 'ro',
-  lazy_build => 1,
-);
-
-sub _build_viewfield_role { 'SyForm::ViewField' }
-
-has viewfield_object_class => (
-  isa => 'Str',
-  is => 'ro',
-  lazy_build => 1,
-);
-sub _build_viewfield_object_class { $_[0]->syform->object_class }
-
-has viewfield_class => (
-  isa => 'Str',
-  is => 'ro',
-  lazy_build => 1,
-);
-
-sub _build_viewfield_class {
-  my ( $self ) = @_;
-  return $self->_viewfield_metaclass->name;
-}
-
-has _viewfield_metaclass => (
-  isa => 'Moose::Meta::Class',
-  is => 'ro',
-  lazy_build => 1,
-);
-
-sub _build__viewfield_metaclass {
-  my ( $self ) = @_;
-  my $syform = $self->syform;
-  return Moose::Meta::Class->create(
-    (ref $syform).'::ViewField',
-    superclasses => [$self->viewfield_object_class],
-    roles => [ $self->viewfield_role ],
-  )
-}
+sub has_results { 1 } # results should be optional
 
 has field_names => (
-  is => 'ro',
-  isa => 'ArrayRef[Str]',
-  lazy_build => 1,
+  is => 'lazy',
 );
 
 sub _build_field_names {
   my ( $self ) = @_;
-  [map { $_->name } @{$self->fields}];
+  return [ map { $_->name } $self->fields->Values ];
 }
 
 has fields => (
-  is => 'ro',
-  isa => 'HashRef[SyForm::ViewField]',
-  lazy_build => 1,
+  is => 'lazy',
+  init_arg => undef,
 );
-sub field { shift->fields->{(shift)} }
-sub viewfield { shift->fields->{(shift)} }
+sub viewfields { shift->fields }
+sub field { shift->fields->FETCH(@_) }
+sub viewfield { shift->fields->FETCH(@_) }
 
 sub _build_fields {
   my ( $self ) = @_;
-  my %viewfield_roles = %{$self->viewfield_roles};
-  my %fields;
+  my $fields = Tie::IxHash->new;
   for my $field ($self->syform->fields->Values) {
-    my %viewfield_args = $field->viewfield_args_by_results($self->results);
-    my @traits = @{$self->viewfield_roles_for_all};
-    push @traits, @{$viewfield_roles{$field->name}}
-      if defined $viewfield_roles{$field->name};
-    push @traits, @{delete $viewfield_args{roles}}
-        if defined $viewfield_args{roles};
-    $fields{$field->name} = $self->create_viewfield($field,
-      field => $field,
-      roles => [ @traits ],
-    );
+    $fields->Push(map { $_->name, $_ } $field->viewfields_for_view($self))
+      if $field->can('viewfields_for_view');
   }
-  return { %fields };
-}
-
-sub create_viewfield {
-  my ( $self, $field, %args ) = @_;
-  my @traits = @{delete $args{roles}};
-  return $self->viewfield_class->new_with_traits({
-    scalar @traits ? ( traits => [@traits] ) : (),
-    field => $field,
-    view => $self,
-    %args,
-  });
+  return $fields;
 }
 
 1;
@@ -145,7 +65,7 @@ SyForm::View - Container for SyForm::Results and SyForm::ViewField
 
 =head1 VERSION
 
-version 0.010
+version 0.100
 
 =head1 AUTHOR
 

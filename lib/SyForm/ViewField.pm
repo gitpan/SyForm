@@ -2,62 +2,71 @@ package SyForm::ViewField;
 BEGIN {
   $SyForm::ViewField::AUTHORITY = 'cpan:GETTY';
 }
-# ABSTRACT: Role for fields inside a SyForm::View
-$SyForm::ViewField::VERSION = '0.010';
-use Moose::Role;
-use namespace::clean -except => 'meta';
+# ABSTRACT: View fields inside a SyForm::View
+$SyForm::ViewField::VERSION = '0.100';
+use Moo;
 
 with qw(
-  MooseX::Traits
-);
-
-has view => (
-  is => 'ro',
-  isa => 'SyForm::View',
-  required => 1,
-  handles => [qw(
-    viewfield
-    results
-  )],
+  MooX::Traits
+  SyForm::ViewFieldRole::Verify
+  SyForm::ViewFieldRole::HTML
+  SyForm::ViewFieldRole::Bootstrap
 );
 
 has field => (
   is => 'ro',
-  isa => 'SyForm::Field',
+  predicate => 1,
+);
+
+has view => (
+  is => 'ro',
   required => 1,
   handles => [qw(
+    viewfields
+    fields
     syform
+    results
+    values
   )],
 );
 
-sub has_value {
-  my ( $self ) = @_;
-  my $name = $self->field->name;
-  $self->results->values->has_value($name);
-}
+has name => (
+  is => 'ro',
+  required => 1,
+);
 
-sub value {
-  my ( $self ) = @_;
-  my $name = $self->field->name;
-  $self->results->values->get_value($name);
-}
+has has_name => (
+  is => 'lazy',
+);
+sub _build_has_name { 'has_'.($_[0]->name) }
 
-sub has_result {
-  my ( $self ) = @_;
-  my $name = $self->field->name;
-  $self->results->has_result($name);
-}
+has label => (
+  is => 'ro',
+  predicate => 1,
+);
 
-sub result {
-  my ( $self ) = @_;
-  my $name = $self->field->name;
-  $self->results->get_result($name);
-}
+has value => (
+  is => 'ro',
+  predicate => 1,
+);
+
+has result => (
+  is => 'ro',
+  predicate => 1,
+);
 
 sub val {
   my ( $self ) = @_;
   return $self->result if $self->has_result;
   return $self->value if $self->has_value;
+  return;
+}
+
+sub has_val {
+  my ( $self ) = @_;
+  return 1 if $self->has_result;
+  return 1 if $self->has_value;
+  return 0;
 }
 
 1;
@@ -68,11 +77,11 @@ __END__
 
 =head1 NAME
 
-SyForm::ViewField - Role for fields inside a SyForm::View
+SyForm::ViewField - View fields inside a SyForm::View
 
 =head1 VERSION
 
-version 0.010
+version 0.100
 
 =head1 AUTHOR
 

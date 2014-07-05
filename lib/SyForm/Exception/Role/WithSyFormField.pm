@@ -3,12 +3,11 @@ BEGIN {
   $SyForm::Exception::Role::WithSyFormField::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Role for exceptions with a SyForm field as reference
-$SyForm::Exception::Role::WithSyFormField::VERSION = '0.010';
-use Moose::Role;
+$SyForm::Exception::Role::WithSyFormField::VERSION = '0.100';
+use Moo::Role;
 
 has field => (
   is => 'ro',
-  does => 'SyForm::Field',
   required => 1,
   handles => [qw(
     syform
@@ -27,7 +26,7 @@ SyForm::Exception::Role::WithSyFormField - Role for exceptions with a SyForm fie
 
 =head1 VERSION
 
-version 0.010
+version 0.100
 
 =head1 AUTHOR
 

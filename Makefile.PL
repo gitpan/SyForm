@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Easy role driven form management",
+  "ABSTRACT" => "Easy form management",
   "AUTHOR" => "Torsten Raudssus <torsten\@raudss.us>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
@@ -21,20 +21,22 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "SyForm",
   "PREREQ_PM" => {
+    "HTML::Declare" => 0,
     "List::MoreUtils" => 0,
-    "Moose" => "2.1204",
-    "MooseX::Role::WithOverloading" => "0.13",
-    "MooseX::Traits" => "0.12",
+    "Module::Load::Conditional" => 0,
+    "Module::Runtime" => 0,
+    "Moo" => 0,
+    "MooX::Traits" => 0,
+    "Safe::Isa" => 0,
+    "Syccess" => 0,
     "Throwable" => 0,
-    "Tie::IxHash" => 0,
-    "Validation::Class" => 0,
-    "namespace::clean" => 0
+    "Tie::IxHash" => 0
   },
   "TEST_REQUIRES" => {
     "Test::LoadAllModules" => "0.021",
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.010",
+  "VERSION" => "0.100",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -42,16 +44,18 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "HTML::Declare" => 0,
   "List::MoreUtils" => 0,
-  "Moose" => "2.1204",
-  "MooseX::Role::WithOverloading" => "0.13",
-  "MooseX::Traits" => "0.12",
+  "Module::Load::Conditional" => 0,
+  "Module::Runtime" => 0,
+  "Moo" => 0,
+  "MooX::Traits" => 0,
+  "Safe::Isa" => 0,
+  "Syccess" => 0,
   "Test::LoadAllModules" => "0.021",
   "Test::More" => "0.96",
   "Throwable" => 0,
-  "Tie::IxHash" => 0,
-  "Validation::Class" => 0,
-  "namespace::clean" => 0
+  "Tie::IxHash" => 0
 );
 
 

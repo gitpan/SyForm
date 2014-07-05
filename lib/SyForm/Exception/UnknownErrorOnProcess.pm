@@ -3,8 +3,8 @@ BEGIN {
   $SyForm::Exception::UnknownErrorOnProcess::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Exception on SyForm::Process->process
-$SyForm::Exception::UnknownErrorOnProcess::VERSION = '0.010';
-use Moose;
+$SyForm::Exception::UnknownErrorOnProcess::VERSION = '0.100';
+use Moo;
 extends 'SyForm::Exception';
 
 with qw(
@@ -14,7 +14,6 @@ with qw(
 
 has process_args => (
   is => 'ro',
-  isa => 'ArrayRef',
   required => 1,
 );
 
@@ -40,7 +39,7 @@ SyForm::Exception::UnknownErrorOnProcess - Exception on SyForm::Process->process
 
 =head1 VERSION
 
-version 0.010
+version 0.100
 
 =head1 AUTHOR
 
