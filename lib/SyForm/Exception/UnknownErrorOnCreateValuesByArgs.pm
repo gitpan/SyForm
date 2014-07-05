@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Exception::UnknownErrorOnCreateValuesByArgs::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Exception on SyForm::Process->create_values_by_args
-$SyForm::Exception::UnknownErrorOnCreateValuesByArgs::VERSION = '0.100';
+$SyForm::Exception::UnknownErrorOnCreateValuesByArgs::VERSION = '0.101';
 use Moo;
 extends 'SyForm::Exception';
 
@@ -39,7 +39,7 @@ SyForm::Exception::UnknownErrorOnCreateValuesByArgs - Exception on SyForm::Proce
 
 =head1 VERSION
 
-version 0.100
+version 0.101
 
 =head1 AUTHOR
 

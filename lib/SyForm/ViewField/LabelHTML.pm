@@ -2,7 +2,7 @@ package SyForm::ViewField::LabelHTML;
 BEGIN {
   $SyForm::ViewField::LabelHTML::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::ViewField::LabelHTML::VERSION = '0.100';
+$SyForm::ViewField::LabelHTML::VERSION = '0.101';
 use Moo;
 use List::MoreUtils qw( uniq );
 use HTML::Declare ':all';
@@ -62,7 +62,7 @@ SyForm::ViewField::LabelHTML
 
 =head1 VERSION
 
-version 0.100
+version 0.101
 
 =head1 AUTHOR
 

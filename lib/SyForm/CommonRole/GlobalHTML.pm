@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::CommonRole::GlobalHTML::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Standard role for objects with HTML global attributes
-$SyForm::CommonRole::GlobalHTML::VERSION = '0.100';
+$SyForm::CommonRole::GlobalHTML::VERSION = '0.101';
 use Moo::Role;
 
 our @attributes = qw(
@@ -66,7 +66,7 @@ SyForm::CommonRole::GlobalHTML - Standard role for objects with HTML global attr
 
 =head1 VERSION
 
-version 0.100
+version 0.101
 
 =head1 AUTHOR
 

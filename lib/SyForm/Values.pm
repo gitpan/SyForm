@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Values::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Values given of the fields through the process args
-$SyForm::Values::VERSION = '0.100';
+$SyForm::Values::VERSION = '0.101';
 use Moo;
 
 with qw(
@@ -81,7 +81,7 @@ SyForm::Values - Values given of the fields through the process args
 
 =head1 VERSION
 
-version 0.100
+version 0.101
 
 =head1 AUTHOR
 

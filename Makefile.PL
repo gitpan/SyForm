@@ -33,10 +33,9 @@ my %WriteMakefileArgs = (
     "Tie::IxHash" => 0
   },
   "TEST_REQUIRES" => {
-    "Test::LoadAllModules" => "0.021",
-    "Test::More" => "0.96"
+    "Test::More" => "0.94"
   },
-  "VERSION" => "0.100",
+  "VERSION" => "0.101",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -52,8 +51,7 @@ my %FallbackPrereqs = (
   "MooX::Traits" => 0,
   "Safe::Isa" => 0,
   "Syccess" => 0,
-  "Test::LoadAllModules" => "0.021",
-  "Test::More" => "0.96",
+  "Test::More" => "0.94",
   "Throwable" => 0,
   "Tie::IxHash" => 0
 );

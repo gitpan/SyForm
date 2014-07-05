@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Easy form management
-$SyForm::VERSION = '0.100';
+$SyForm::VERSION = '0.101';
 use Moo;
 use Tie::IxHash;
 use Module::Runtime qw( use_module );
@@ -105,7 +105,7 @@ SyForm - Easy form management
 
 =head1 VERSION
 
-version 0.100
+version 0.101
 
 =head1 SYNOPSIS
 

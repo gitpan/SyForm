@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Role::Label::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: A label for the form
-$SyForm::Role::Label::VERSION = '0.100';
+$SyForm::Role::Label::VERSION = '0.101';
 use Moo::Role;
 
 has label => (
@@ -23,7 +23,7 @@ SyForm::Role::Label - A label for the form
 
 =head1 VERSION
 
-version 0.100
+version 0.101
 
 =head1 AUTHOR
 

@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::ViewRole::HTML::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: HTML view functions
-$SyForm::ViewRole::HTML::VERSION = '0.100';
+$SyForm::ViewRole::HTML::VERSION = '0.101';
 use Moo::Role;
 use SyForm::FormHTML;
 
@@ -61,7 +61,7 @@ SyForm::ViewRole::HTML - HTML view functions
 
 =head1 VERSION
 
-version 0.100
+version 0.101
 
 =head1 AUTHOR
 

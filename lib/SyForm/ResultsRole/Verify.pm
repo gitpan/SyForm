@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::ResultsRole::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Trait for SyForm fields of SyForm::Results and SyForm::Values attributes
-$SyForm::ResultsRole::Verify::VERSION = '0.100';
+$SyForm::ResultsRole::Verify::VERSION = '0.101';
 use Moo::Role;
 
 requires qw(
@@ -36,7 +36,7 @@ SyForm::ResultsRole::Verify - Trait for SyForm fields of SyForm::Results and SyF
 
 =head1 VERSION
 
-version 0.100
+version 0.101
 
 =head1 AUTHOR
 
