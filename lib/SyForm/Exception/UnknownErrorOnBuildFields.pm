@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::Exception::UnknownErrorOnBuildFields::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Exception at the building of the fields on a SyForm
-$SyForm::Exception::UnknownErrorOnBuildFields::VERSION = '0.101';
+$SyForm::Exception::UnknownErrorOnBuildFields::VERSION = '0.102';
 use Moo;
 extends 'SyForm::Exception';
 
@@ -33,7 +33,7 @@ SyForm::Exception::UnknownErrorOnBuildFields - Exception at the building of the 
 
 =head1 VERSION
 
-version 0.101
+version 0.102
 
 =head1 AUTHOR
 

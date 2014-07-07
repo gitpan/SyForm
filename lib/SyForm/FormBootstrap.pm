@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::FormBootstrap::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Bootstrap Form
-$SyForm::FormBootstrap::VERSION = '0.101';
+$SyForm::FormBootstrap::VERSION = '0.102';
 use Moo;
 use HTML::Declare ':all';
 use Safe::Isa;
@@ -47,7 +47,7 @@ SyForm::FormBootstrap - Bootstrap Form
 
 =head1 VERSION
 
-version 0.101
+version 0.102
 
 =head1 AUTHOR
 

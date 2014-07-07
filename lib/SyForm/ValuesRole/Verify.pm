@@ -3,7 +3,7 @@ BEGIN {
   $SyForm::ValuesRole::Verify::AUTHORITY = 'cpan:GETTY';
 }
 # ABSTRACT: Verification of values for the SyForm::Results
-$SyForm::ValuesRole::Verify::VERSION = '0.101';
+$SyForm::ValuesRole::Verify::VERSION = '0.102';
 use Moo::Role;
 
 around create_results => sub {
@@ -59,7 +59,7 @@ SyForm::ValuesRole::Verify - Verification of values for the SyForm::Results
 
 =head1 VERSION
 
-version 0.101
+version 0.102
 
 =head1 AUTHOR
 

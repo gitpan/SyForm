@@ -2,7 +2,7 @@ package SyForm::Util::HTML;
 BEGIN {
   $SyForm::Util::HTML::AUTHORITY = 'cpan:GETTY';
 }
-$SyForm::Util::HTML::VERSION = '0.101';
+$SyForm::Util::HTML::VERSION = '0.102';
 use strict;
 use warnings;
 use Exporter 'import';
@@ -95,7 +95,7 @@ SyForm::Util::HTML
 
 =head1 VERSION
 
-version 0.101
+version 0.102
 
 =head1 AUTHOR
 

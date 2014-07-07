@@ -14,6 +14,7 @@ meta-spec:
   version: '1.4'
 name: SyForm
 requires:
+  Clone: '0'
   HTML::Declare: '0'
   List::MoreUtils: '0'
   Module::Load::Conditional: '0'
@@ -27,7 +28,7 @@ requires:
 resources:
   homepage: https://github.com/SyContent/SyForm
   repository: https://github.com/SyContent/SyForm.git
-version: '0.101'
+version: '0.102'
 x_Dist_Zilla:
   perl:
     version: '5.018001'

@@ -21,6 +21,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "SyForm",
   "PREREQ_PM" => {
+    "Clone" => 0,
     "HTML::Declare" => 0,
     "List::MoreUtils" => 0,
     "Module::Load::Conditional" => 0,
@@ -35,7 +36,7 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "Test::More" => "0.94"
   },
-  "VERSION" => "0.101",
+  "VERSION" => "0.102",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -43,6 +44,7 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "Clone" => 0,
   "HTML::Declare" => 0,
   "List::MoreUtils" => 0,
   "Module::Load::Conditional" => 0,
